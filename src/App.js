@@ -1,17 +1,27 @@
 import "./App.css";
 
 import React from "react";
-import Button from "@mui/material/Button";
+import { Button, Typography } from "@mui/material";
 import Layout from "./components/Layout";
 import Login from "./components/Login";
+import AreaAppBar from "./components/AreaAppBar";
+import TemporaryDrawer from "./components/Drawer";
+//import { PersistentDrawerLeft } from "./components/PersistentDrawerLeft";
 
 function App() {
   return (
-    <Layout>
-      <h1>Personal Finance</h1>
-      <Button variant="contained">Hello World</Button>
-      <Login />
-    </Layout>
+    <>
+      <AreaAppBar />
+      <TemporaryDrawer />
+      <Layout>
+        <Typography component="h1" variant="h4">
+          OPOPO KJKJKJ JK
+        </Typography>
+        <Button variant="contained">Hello World</Button>
+        <Login />
+        {/*<PersistentDrawerLeft />*/}
+      </Layout>
+    </>
   );
 }
 

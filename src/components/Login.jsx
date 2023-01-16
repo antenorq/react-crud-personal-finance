@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container, Box, Button } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import { async } from "@firebase/util";
 import { db } from "../firebase/config";
 import {
@@ -10,9 +11,11 @@ import {
   signOut,
 } from "firebase/auth";
 
+import "@fontsource/roboto/300.css";
+
 const Login = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const auth = getAuth();
 
@@ -20,16 +23,19 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(`popopo`);
 
-    await signInWithEmailAndPassword(auth, data.email, data.password);
+    const result = await signInWithEmailAndPassword(auth, email, password);
+
+    console.log(result);
   };
 
   return (
     <Container maxWidth="md">
       <Box bgcolor="#DDD" mt={"20px"}>
-        <h1>LOGIN DE USUARIO</h1>
-        <form onSubmit={handleLogin}>
+        <Typography component="h1" variant="h6">
+          LOGIN DE USUARIooo
+        </Typography>
+        <form>
           <input
             type="email"
             name="email"
