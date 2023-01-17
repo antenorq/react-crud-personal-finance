@@ -1,24 +1,18 @@
-import "./App.css";
-
 import React from "react";
 
-import { Button, Typography } from "@mui/material";
-import Layout from "./components/Layout";
-import Login from "./components/Login";
+import { Container, Box } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+
 import AreaAppBar from "./components/AreaAppBar";
+import Login from "./components/Login";
 
 function App() {
   return (
-    <>
+    <Container maxWidth="xl">
+      <CssBaseline />
       <AreaAppBar />
-      <Layout>
-        <Typography component="h1" variant="h4">
-          HOME
-        </Typography>
-        <Button variant="contained">Hello World</Button>
-        <Login />
-      </Layout>
-    </>
+      <Login />
+    </Container>
   );
 }
 

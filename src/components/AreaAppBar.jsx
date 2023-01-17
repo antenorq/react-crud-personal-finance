@@ -10,10 +10,14 @@ import TemporaryDrawer from "../components/Drawer";
 import { useState } from "react";
 
 export default function AreaAppBar() {
-  const [open, setOpen] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   const handleDrawerOpen = () => {
-    setOpen(true);
+    setOpenDrawer(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpenDrawer(false);
   };
 
   return (
@@ -32,7 +36,7 @@ export default function AreaAppBar() {
           </IconButton>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            New
+            COMPONENT APPBAR
           </Typography>
           <Button color="inherit" onClick={handleDrawerOpen}>
             ABRIR DRAWER
@@ -40,7 +44,10 @@ export default function AreaAppBar() {
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
-      <TemporaryDrawer open={open} />
+      <TemporaryDrawer
+        openDrawer={openDrawer}
+        setOpenDrawerParent={handleDrawerClose}
+      />
     </Box>
   );
 }

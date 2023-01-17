@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -13,14 +13,16 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
 export default function TemporaryDrawer(props) {
-  const open = props.open;
-  const [state, setState] = useState(open);
+  const [state, setState] = useState(props.openDrawer);
 
   useEffect(() => {
-    console.log("open: " + open);
-    console.log("state: " + state);
-    if (open === true) {
+    console.log("state: " + state, "/ props-openDrawer: " + props.openDrawer);
+    if (props.openDrawer === true) {
       handleDrawerOpen();
+    }
+
+    if (props.openDrawer === false) {
+      handleDrawerClose();
     }
   });
 
@@ -30,11 +32,11 @@ export default function TemporaryDrawer(props) {
 
   const handleDrawerClose = () => {
     setState(false);
+    props.setOpenDrawerParent();
   };
 
-  const list = (anchor) => (
+  const list = () => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
       role="presentation"
       onClick={handleDrawerClose}
       onKeyDown={handleDrawerClose}
@@ -44,7 +46,7 @@ export default function TemporaryDrawer(props) {
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <MailIcon />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -57,7 +59,7 @@ export default function TemporaryDrawer(props) {
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <InboxIcon />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -70,10 +72,18 @@ export default function TemporaryDrawer(props) {
   return (
     <div>
       <React.Fragment key="left">
-        <Button onClick={handleDrawerOpen}>ABIR</Button>
-
+        {/*
+        <Button
+          color="error"
+          variant="contained"
+          onClick={handleDrawerOpen}
+          sx={{ mt: 4 }}
+        >
+          BOTAO DENTRO DO DRAWER COMPONENT
+        </Button>
+      */}
         <Drawer anchor="left" open={state} onClose={handleDrawerClose}>
-          {list("left")}
+          {list()}
         </Drawer>
       </React.Fragment>
     </div>
