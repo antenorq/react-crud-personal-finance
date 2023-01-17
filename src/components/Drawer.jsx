@@ -37,6 +37,7 @@ export default function TemporaryDrawer(props) {
 
   const list = () => (
     <Box
+      sx={{ width: 300 }}
       role="presentation"
       onClick={handleDrawerClose}
       onKeyDown={handleDrawerClose}
@@ -71,7 +72,7 @@ export default function TemporaryDrawer(props) {
 
   return (
     <div>
-      <React.Fragment key="left">
+      <React.Fragment>
         {/*
         <Button
           color="error"
