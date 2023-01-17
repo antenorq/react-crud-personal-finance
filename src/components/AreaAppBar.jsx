@@ -21,7 +21,7 @@ export default function AreaAppBar() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -46,7 +46,7 @@ export default function AreaAppBar() {
       </AppBar>
       <TemporaryDrawer
         openDrawer={openDrawer}
-        setOpenDrawerParent={handleDrawerClose}
+        handleDrawerClose={handleDrawerClose}
       />
     </Box>
   );
