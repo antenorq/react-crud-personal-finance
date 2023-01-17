@@ -13,23 +13,31 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
 export default function TemporaryDrawer(props) {
-  const [state, setState] = useState(false);
-
-  const toggleDrawer = (abrir) => (event) => {
-    setState(abrir);
-  };
+  const open = props.open;
+  const [state, setState] = useState(open);
 
   useEffect(() => {
-    console.log("estado: " + props.estado);
-    /*setState(props.estado);*/
-  }, [props.estado]);
+    console.log("open: " + open);
+    console.log("state: " + state);
+    if (open === true) {
+      handleDrawerOpen();
+    }
+  });
+
+  const handleDrawerOpen = () => {
+    setState(true);
+  };
+
+  const handleDrawerClose = () => {
+    setState(false);
+  };
 
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
       role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
+      onClick={handleDrawerClose}
+      onKeyDown={handleDrawerClose}
     >
       <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
@@ -62,9 +70,9 @@ export default function TemporaryDrawer(props) {
   return (
     <div>
       <React.Fragment key="left">
-        <Button onClick={toggleDrawer(true)}>ABIR</Button>
+        <Button onClick={handleDrawerOpen}>ABIR</Button>
 
-        <Drawer anchor="left" open={state} onClose={toggleDrawer(false)}>
+        <Drawer anchor="left" open={state} onClose={handleDrawerClose}>
           {list("left")}
         </Drawer>
       </React.Fragment>

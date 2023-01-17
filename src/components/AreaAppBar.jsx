@@ -7,24 +7,14 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import TemporaryDrawer from "../components/Drawer";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function AreaAppBar() {
-  const [stateDrawer, setStateDrawer] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const showDrawer = (e) => {
-    if (stateDrawer === false) {
-      setStateDrawer(true);
-    } else {
-      setStateDrawer(false);
-    }
+  const handleDrawerOpen = () => {
+    setOpen(true);
   };
-
-  useEffect(() => {
-    console.log("stateDrawer: " + stateDrawer);
-    /*setStateDrawer(false);*/
-    /*showDrawer();*/
-  }, [stateDrawer]);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -36,7 +26,7 @@ export default function AreaAppBar() {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
-            onClick={showDrawer}
+            onClick={handleDrawerOpen}
           >
             <MenuIcon />
           </IconButton>
@@ -44,13 +34,13 @@ export default function AreaAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             New
           </Typography>
-          <Button color="inherit" onClick={showDrawer}>
+          <Button color="inherit" onClick={handleDrawerOpen}>
             ABRIR DRAWER
           </Button>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
-      <TemporaryDrawer estado={stateDrawer} />
+      <TemporaryDrawer open={open} />
     </Box>
   );
 }
