@@ -6,23 +6,15 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 import AreaAppBar from "./components/AreaAppBar";
 import Login from "./components/Login";
-import { MarginOutlined, RoundedCorner } from "@mui/icons-material";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
-    <Container maxWidth="xl" sx={{ borderRadius: 2 }}>
+    <Container maxWidth="xl">
       <CssBaseline />
       <AreaAppBar />
-      <Box
-        sx={{
-          bgcolor: "background.paper",
-          boxShadow: 1,
-          borderRadius: 2,
-          p: 2,
-          minWidth: 300,
-          mt: 4,
-        }}
-      >
+      <Box sx={{ my: 2 }}>
+        <Dashboard />
         <Login />
       </Box>
     </Container>

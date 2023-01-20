@@ -22,12 +22,11 @@ export default function AreaAppBar() {
 
   return (
     <Box>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ borderRadius: 1, bgcolor: "primary" }}>
         <Toolbar>
           <IconButton
             size="large"
             edge="start"
-            color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
             onClick={handleDrawerOpen}
@@ -36,7 +35,7 @@ export default function AreaAppBar() {
           </IconButton>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            COMPONENT APPBAR
+            PERSONAL FINANCE
           </Typography>
           <Button color="inherit" onClick={handleDrawerOpen}>
             ABRIR DRAWER
