@@ -1,23 +1,25 @@
 import React from "react";
 
 import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 
 import AreaAppBar from "./components/AreaAppBar";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <Container maxWidth="xl">
+    <BrowserRouter>
       <CssBaseline />
-      <AreaAppBar />
-      <Box sx={{ my: 2 }}>
-        <Dashboard />
-        <Login />
-      </Box>
-    </Container>
+      <AreaAppBar maxWidth="xl" />
+      <Container maxWidth="xl" sx={{ bgcolor: "#f5f5f5", my: 4, p: 4 }}>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Container>
+    </BrowserRouter>
   );
 }
 

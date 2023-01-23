@@ -48,12 +48,9 @@ export default function TemporaryDrawer({ openDrawer, handleDrawerClose }) {
 
   return (
     <div>
-      <React.Fragment>
-        <Drawer anchor="left" open={openDrawer} onClose={handleDrawerClose}>
-          {list()}
-        </Drawer>
-        {console.log(openDrawer)}
-      </React.Fragment>
+      <Drawer anchor="left" open={openDrawer} onClose={handleDrawerClose}>
+        {list()}
+      </Drawer>
     </div>
   );
 }
