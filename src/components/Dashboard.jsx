@@ -1,113 +1,89 @@
 import React from "react";
 import { Grid, Paper, Typography } from "@mui/material";
-import PaidIcon from "@mui/icons-material/Paid";
-import SummarizeIcon from "@mui/icons-material/Summarize";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import ManageSearchIcon from "@mui/icons-material/ManageSearch";
+import CancelIcon from "@mui/icons-material/Cancel";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import KeyIcon from "@mui/icons-material/Key";
+import { NavLink } from "react-router-dom";
+
 import style from "./dashboard.module.css";
 
 const Dashboard = () => {
+  const iconsize = { fontSize: { xs: "80px", sm: "100px", md: "150px" } };
+
   return (
     <Grid
       container
       rowSpacing={{ xs: 2, sm: 2, md: 4 }}
       columnSpacing={{ xs: 2, sm: 2, md: 4 }}
     >
-      <Grid item xs={6} sm={4} md={3}>
+      <Grid item xs={6} sm={4} md={4}>
+        <NavLink to="/income" style={{ textDecoration: "none" }}>
+          <Paper
+            className={style.paper}
+            elevation={3}
+            sx={{ p: { xs: 2, sm: 2, md: 4 } }}
+          >
+            <AddCircleIcon color="success" sx={iconsize} />
+            <Typography variant="h6">INCOME</Typography>
+          </Paper>
+        </NavLink>
+      </Grid>
+
+      <Grid item xs={6} sm={4} md={4}>
         <Paper
           className={style.paper}
           elevation={3}
           sx={{ p: { xs: 2, sm: 2, md: 4 } }}
         >
-          <PaidIcon
-            color="error"
-            sx={{ fontSize: { xs: "80px", sm: "100px", md: "150px" } }}
-          />
-          <Typography variant="h6">CADASTRAR DESPESAS</Typography>
+          <RemoveCircleIcon color="error" sx={iconsize} />
+          <Typography variant="h6">EXPENSE</Typography>
         </Paper>
       </Grid>
-      <Grid item xs={6} sm={4} md={3}>
+
+      <Grid item xs={6} sm={4} md={4}>
         <Paper
           className={style.paper}
           elevation={3}
           sx={{ p: { xs: 2, sm: 2, md: 4 } }}
         >
-          <PaidIcon
-            color="success"
-            sx={{ fontSize: { xs: "80px", sm: "100px", md: "150px" } }}
-          />
-          <Typography variant="h6">CADASTRAR RECEITA</Typography>
+          <ManageSearchIcon color="primary" sx={iconsize} />
+          <Typography variant="h6">SEARCH</Typography>
         </Paper>
       </Grid>
-      <Grid item xs={6} sm={4} md={3}>
+
+      <Grid item xs={6} sm={4} md={4}>
         <Paper
           className={style.paper}
           elevation={3}
           sx={{ p: { xs: 2, sm: 2, md: 4 } }}
         >
-          <SummarizeIcon
-            color="primary"
-            sx={{ fontSize: { xs: "80px", sm: "100px", md: "150px" } }}
-          />
-          <Typography variant="h6">RELATORIO</Typography>
+          <ListAltIcon color="primary" sx={iconsize} />
+          <Typography variant="h6">CATEGORY</Typography>
         </Paper>
       </Grid>
-      <Grid item xs={6} sm={4} md={3}>
+
+      <Grid item xs={6} sm={4} md={4}>
         <Paper
           className={style.paper}
           elevation={3}
           sx={{ p: { xs: 2, sm: 2, md: 4 } }}
         >
-          <PaidIcon
-            color="primary"
-            sx={{ fontSize: { xs: "80px", sm: "100px", md: "150px" } }}
-          />
+          <KeyIcon color="primary" sx={iconsize} />
+          <Typography variant="h6">PASSWORD</Typography>
         </Paper>
       </Grid>
-      <Grid item xs={6} sm={4} md={3}>
+
+      <Grid item xs={6} sm={4} md={4}>
         <Paper
           className={style.paper}
           elevation={3}
           sx={{ p: { xs: 2, sm: 2, md: 4 } }}
         >
-          <PaidIcon
-            color="primary"
-            sx={{ fontSize: { xs: "80px", sm: "100px", md: "150px" } }}
-          />
-        </Paper>
-      </Grid>
-      <Grid item xs={6} sm={4} md={3}>
-        <Paper
-          className={style.paper}
-          elevation={3}
-          sx={{ p: { xs: 2, sm: 2, md: 4 } }}
-        >
-          <PaidIcon
-            color="primary"
-            sx={{ fontSize: { xs: "80px", sm: "100px", md: "150px" } }}
-          />
-        </Paper>
-      </Grid>
-      <Grid item xs={6} sm={4} md={3}>
-        <Paper
-          className={style.paper}
-          elevation={3}
-          sx={{ p: { xs: 2, sm: 2, md: 4 } }}
-        >
-          <PaidIcon
-            color="primary"
-            sx={{ fontSize: { xs: "80px", sm: "100px", md: "150px" } }}
-          />
-        </Paper>
-      </Grid>
-      <Grid item xs={6} sm={4} md={3}>
-        <Paper
-          className={style.paper}
-          elevation={3}
-          sx={{ p: { xs: 2, sm: 2, md: 4 } }}
-        >
-          <PaidIcon
-            color="primary"
-            sx={{ fontSize: { xs: "80px", sm: "100px", md: "150px" } }}
-          />
+          <CancelIcon color="primary" sx={iconsize} />
+          <Typography variant="h6">LOGOUT</Typography>
         </Paper>
       </Grid>
     </Grid>

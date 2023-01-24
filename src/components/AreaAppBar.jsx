@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import TemporaryDrawer from "../components/Drawer";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function AreaAppBar() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -39,7 +39,7 @@ export default function AreaAppBar() {
           </Typography>
 
           <Button
-            component={Link}
+            component={NavLink}
             to={"/"}
             variant="contained"
             color="info"
@@ -49,6 +49,8 @@ export default function AreaAppBar() {
           </Button>
 
           <Button
+            component={NavLink}
+            to={"/about"}
             variant="contained"
             color="info"
             sx={{ display: { xs: "none", md: "flex" }, mx: "5px" }}
@@ -57,7 +59,7 @@ export default function AreaAppBar() {
           </Button>
 
           <Button
-            component={Link}
+            component={NavLink}
             to={"/login"}
             variant="contained"
             color="info"
