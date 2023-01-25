@@ -11,7 +11,10 @@ import { NavLink } from "react-router-dom";
 import style from "./dashboard.module.css";
 
 const Dashboard = () => {
-  const iconsize = { fontSize: { xs: "80px", sm: "100px", md: "150px" } };
+  const iconsize = {
+    fontSize: { xs: "80px", md: "100px", lg: "120px" },
+  };
+  const paperconfig = { p: { xs: 2, sm: 2, md: 4 }, borderRadius: 3 };
 
   return (
     <Grid
@@ -19,71 +22,64 @@ const Dashboard = () => {
       rowSpacing={{ xs: 2, sm: 2, md: 4 }}
       columnSpacing={{ xs: 2, sm: 2, md: 4 }}
     >
-      <Grid item xs={6} sm={4} md={4}>
+      <Grid item xs={6} sm={4} md={4} lg={2}>
         <NavLink to="/income" style={{ textDecoration: "none" }}>
-          <Paper
-            className={style.paper}
-            elevation={3}
-            sx={{ p: { xs: 2, sm: 2, md: 4 } }}
-          >
+          <Paper className={style.paper} elevation={2} sx={paperconfig}>
             <AddCircleIcon color="success" sx={iconsize} />
             <Typography variant="h6">INCOME</Typography>
           </Paper>
         </NavLink>
       </Grid>
 
-      <Grid item xs={6} sm={4} md={4}>
-        <Paper
-          className={style.paper}
-          elevation={3}
-          sx={{ p: { xs: 2, sm: 2, md: 4 } }}
-        >
+      <Grid item xs={6} sm={4} md={4} lg={2}>
+        <Paper className={style.paper} elevation={2} sx={paperconfig}>
           <RemoveCircleIcon color="error" sx={iconsize} />
           <Typography variant="h6">EXPENSE</Typography>
         </Paper>
       </Grid>
 
-      <Grid item xs={6} sm={4} md={4}>
-        <Paper
-          className={style.paper}
-          elevation={3}
-          sx={{ p: { xs: 2, sm: 2, md: 4 } }}
-        >
+      <Grid item xs={6} sm={4} md={4} lg={2}>
+        <Paper className={style.paper} elevation={2} sx={paperconfig}>
           <ManageSearchIcon color="primary" sx={iconsize} />
           <Typography variant="h6">SEARCH</Typography>
         </Paper>
       </Grid>
 
-      <Grid item xs={6} sm={4} md={4}>
-        <Paper
-          className={style.paper}
-          elevation={3}
-          sx={{ p: { xs: 2, sm: 2, md: 4 } }}
-        >
+      <Grid item xs={6} sm={4} md={4} lg={2}>
+        <Paper className={style.paper} elevation={2} sx={paperconfig}>
           <ListAltIcon color="primary" sx={iconsize} />
           <Typography variant="h6">CATEGORY</Typography>
         </Paper>
       </Grid>
 
-      <Grid item xs={6} sm={4} md={4}>
-        <Paper
-          className={style.paper}
-          elevation={3}
-          sx={{ p: { xs: 2, sm: 2, md: 4 } }}
-        >
+      <Grid item xs={6} sm={4} md={4} lg={2}>
+        <Paper className={style.paper} elevation={2} sx={paperconfig}>
           <KeyIcon color="primary" sx={iconsize} />
           <Typography variant="h6">PASSWORD</Typography>
         </Paper>
       </Grid>
 
-      <Grid item xs={6} sm={4} md={4}>
-        <Paper
-          className={style.paper}
-          elevation={3}
-          sx={{ p: { xs: 2, sm: 2, md: 4 } }}
-        >
+      <Grid item xs={6} sm={4} md={4} lg={2}>
+        <Paper className={style.paper} elevation={2} sx={paperconfig}>
           <CancelIcon color="primary" sx={iconsize} />
           <Typography variant="h6">LOGOUT</Typography>
+        </Paper>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Paper className={style.paper} elevation={2} sx={paperconfig}>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
         </Paper>
       </Grid>
     </Grid>

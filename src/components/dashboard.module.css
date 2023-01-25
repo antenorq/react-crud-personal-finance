@@ -1,3 +1,6 @@
 .paper {
   text-align: center;
 }
+.paper:hover {
+  background-color: #ebebeb;
+}
