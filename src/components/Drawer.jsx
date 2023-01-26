@@ -9,6 +9,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import { NavLink } from "react-router-dom";
+import Home from "@mui/icons-material/Home";
 
 export default function TemporaryDrawer({ openDrawer, handleDrawerClose }) {
   const list = () => (
@@ -19,6 +21,16 @@ export default function TemporaryDrawer({ openDrawer, handleDrawerClose }) {
       onKeyDown={handleDrawerClose}
     >
       <List>
+        <NavLink to="/">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <Home />
+              </ListItemIcon>
+              <ListItemText primary="HOME" />
+            </ListItemButton>
+          </ListItem>
+        </NavLink>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>

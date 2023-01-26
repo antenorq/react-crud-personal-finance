@@ -15,7 +15,7 @@ function App() {
     <BrowserRouter>
       <CssBaseline />
       <AreaAppBar maxWidth="xl" />
-      <Container maxWidth="xl" sx={{ my: 4, p: 4 }}>
+      <Container maxWidth="xl" sx={{ p: 4 }}>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
