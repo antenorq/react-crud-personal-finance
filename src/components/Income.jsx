@@ -9,6 +9,7 @@ import {
   MenuItem,
   InputLabel,
   FormControl,
+  Typography,
 } from "@mui/material";
 
 const Income = () => {
@@ -29,6 +30,15 @@ const Income = () => {
       maxWidth="sm"
       sx={{ borderRadius: "8px", backgroundColor: "#fff", p: 4 }}
     >
+      <Typography
+        align="center"
+        color="success.light"
+        variant="h3"
+        component="h2"
+        gutterBottom
+      >
+        Income
+      </Typography>
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -42,9 +52,9 @@ const Income = () => {
             label="Category"
             onChange={(e) => setCategory(e.target.value)}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={1}>Salary</MenuItem>
+            <MenuItem value={2}>Part-time</MenuItem>
+            <MenuItem value={3}>Freelance</MenuItem>
           </Select>
 
           <TextField

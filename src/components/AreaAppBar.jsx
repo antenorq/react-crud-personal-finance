@@ -25,7 +25,7 @@ export default function AreaAppBar() {
       <AppBar position="static">
         <Toolbar>
           <IconButton
-            sx={{ mr: 2, color: "#fff", display: { xs: "flex", md: "none" } }}
+            sx={{ mr: 2, color: "#fff", display: { xs: "flex", md: "flex" } }}
             size="large"
             edge="start"
             aria-label="menu"

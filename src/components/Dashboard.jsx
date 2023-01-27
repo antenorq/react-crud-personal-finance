@@ -32,10 +32,12 @@ const Dashboard = () => {
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>
-        <Paper className={style.paper} elevation={2} sx={paperstyle}>
-          <RemoveCircleIcon color="error" sx={iconsize} />
-          <Typography variant="h6">EXPENSE</Typography>
-        </Paper>
+        <NavLink to="/expense">
+          <Paper className={style.paper} elevation={2} sx={paperstyle}>
+            <RemoveCircleIcon color="error" sx={iconsize} />
+            <Typography variant="h6">EXPENSE</Typography>
+          </Paper>
+        </NavLink>
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>

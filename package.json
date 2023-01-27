@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.15.0",
     "json-server": "^0.17.1",
+    "json-server-auth": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.2",
@@ -23,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server --watch data/db.json -m ./node_modules/json-server-auth"
   },
   "eslintConfig": {
     "extends": [

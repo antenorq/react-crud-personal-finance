@@ -11,6 +11,8 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { NavLink } from "react-router-dom";
 import Home from "@mui/icons-material/Home";
+import AddCircle from "@mui/icons-material/AddCircle";
+import RemoveCircle from "@mui/icons-material/RemoveCircle";
 
 export default function TemporaryDrawer({ openDrawer, handleDrawerClose }) {
   const list = () => (
@@ -28,6 +30,28 @@ export default function TemporaryDrawer({ openDrawer, handleDrawerClose }) {
                 <Home />
               </ListItemIcon>
               <ListItemText primary="HOME" />
+            </ListItemButton>
+          </ListItem>
+        </NavLink>
+
+        <NavLink to="/">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <AddCircle color="success" />
+              </ListItemIcon>
+              <ListItemText primary="INCOME" />
+            </ListItemButton>
+          </ListItem>
+        </NavLink>
+
+        <NavLink to="/">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <RemoveCircle color="error" />
+              </ListItemIcon>
+              <ListItemText primary="EXPENSE" />
             </ListItemButton>
           </ListItem>
         </NavLink>
