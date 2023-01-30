@@ -13,29 +13,21 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 
-export default function SignInSide() {
+export default function SignInSide({ getLoggedInName }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   const navigate = useNavigate();
 
   const url = "http://localhost:3000/login";
-  /*
-  const login = () => {
-    async function fetchData() {
-      const res = await fetch(url);
-      const data = await res.json();
-      console.log(data);
-    }
-    fetchData();
-  };
-  */
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setPassword("");
     const data = { email, password };
 
-    const res = await fetch(url, {
+    const resp = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -43,8 +35,11 @@ export default function SignInSide() {
       .then((res) => res.json())
       .then((result) => {
         if (result.user) {
-          console.log(result.user.email + " :LOGADO!");
-          navigate("/");
+          console.log(result.user.name + " :LOGADO!");
+          setName(result.user.name);
+
+          setPassword("");
+          //navigate("/");
         } else if (result === "Cannot find user") {
           console.log(result + " :nao encontrou user from email");
         } else if (result === "Incorrect password") {
@@ -57,6 +52,10 @@ export default function SignInSide() {
         console.log(error.message);
       });
   };
+
+  useEffect(() => {
+    getLoggedInName(name);
+  }, [name, getLoggedInName]);
 
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
@@ -119,7 +118,7 @@ export default function SignInSide() {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
+              autoComplete="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -147,6 +146,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
             </Grid>
+            name: {name}
           </Box>
         </Box>
       </Grid>

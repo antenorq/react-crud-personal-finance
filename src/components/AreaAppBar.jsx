@@ -9,7 +9,7 @@ import TemporaryDrawer from "../components/Drawer";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-export default function AreaAppBar() {
+export default function AreaAppBar({ loggedinname }) {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -35,7 +35,7 @@ export default function AreaAppBar() {
           </IconButton>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            PERSONAL FINANCE
+            PERSONAL FINANCE - {loggedinname}
           </Typography>
 
           <Button
