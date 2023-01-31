@@ -6,11 +6,14 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import TemporaryDrawer from "../components/Drawer";
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useState, useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 export default function AreaAppBar({ loggedinname }) {
   const [openDrawer, setOpenDrawer] = useState(false);
+
+  const { user } = useContext(AuthContext);
 
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
@@ -35,7 +38,7 @@ export default function AreaAppBar({ loggedinname }) {
           </IconButton>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            PERSONAL FINANCE - {loggedinname}
+            PERSONAL FINANCE - {loggedinname} - {user}
           </Typography>
 
           <Button

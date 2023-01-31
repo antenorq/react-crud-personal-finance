@@ -9,6 +9,7 @@ import Income from "./components/Income";
 import Expense from "./components/Expense";
 import Dashboard from "./components/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
   const [loggedinname, setLoggedInName] = useState("");
@@ -19,21 +20,23 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <CssBaseline />
-      <AreaAppBar maxWidth="xl" loggedinname={loggedinname} />
-      <Container maxWidth="xl" sx={{ p: 4 }}>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route
-            path="/login"
-            element={<Login getLoggedInName={getLoggedInName} />}
-          />
-          <Route path="/income" element={<Income />} />
-          <Route path="/expense" element={<Expense />} />
-        </Routes>
-      </Container>
-    </BrowserRouter>
+    <AuthContextProvider>
+      <BrowserRouter>
+        <CssBaseline />
+        <AreaAppBar maxWidth="xl" loggedinname={loggedinname} />
+        <Container maxWidth="xl" sx={{ p: 4 }}>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route
+              path="/login"
+              element={<Login getLoggedInName={getLoggedInName} />}
+            />
+            <Route path="/income" element={<Income />} />
+            <Route path="/expense" element={<Expense />} />
+          </Routes>
+        </Container>
+      </BrowserRouter>
+    </AuthContextProvider>
   );
 }
 

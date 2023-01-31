@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,10 +12,13 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 export default function SignInSide({ getLoggedInName }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { setUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -36,6 +39,7 @@ export default function SignInSide({ getLoggedInName }) {
           console.log(result.user.name + " :LOGADO!");
           setPassword("");
           getLoggedInName(result.user.name);
+          setUser(result.user.name);
           navigate("/");
         } else if (result === "Cannot find user") {
           console.log(result + " :nao encontrou user from email");
