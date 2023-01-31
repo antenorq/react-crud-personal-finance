@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -16,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 export default function SignInSide({ getLoggedInName }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
 
   const navigate = useNavigate();
 
@@ -24,7 +23,6 @@ export default function SignInSide({ getLoggedInName }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setPassword("");
     const data = { email, password };
 
     const resp = await fetch(url, {
@@ -36,10 +34,9 @@ export default function SignInSide({ getLoggedInName }) {
       .then((result) => {
         if (result.user) {
           console.log(result.user.name + " :LOGADO!");
-          setName(result.user.name);
-
           setPassword("");
-          //navigate("/");
+          getLoggedInName(result.user.name);
+          navigate("/");
         } else if (result === "Cannot find user") {
           console.log(result + " :nao encontrou user from email");
         } else if (result === "Incorrect password") {
@@ -49,13 +46,11 @@ export default function SignInSide({ getLoggedInName }) {
         }
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log("error.message: " + error.message);
       });
-  };
 
-  useEffect(() => {
-    getLoggedInName(name);
-  }, [name, getLoggedInName]);
+    console.log(resp);
+  };
 
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
@@ -146,7 +141,6 @@ export default function SignInSide({ getLoggedInName }) {
                 </Link>
               </Grid>
             </Grid>
-            name: {name}
           </Box>
         </Box>
       </Grid>

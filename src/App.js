@@ -14,7 +14,7 @@ function App() {
   const [loggedinname, setLoggedInName] = useState("");
 
   const getLoggedInName = (loggedinname) => {
-    console.log("name from app.js parent: " + loggedinname);
+    console.log("loggedinname state from app.js parent: " + loggedinname);
     setLoggedInName(loggedinname);
   };
 
