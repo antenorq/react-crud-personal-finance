@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-export default function SignInSide({ getLoggedInName }) {
+export default function SignInSide() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,7 +28,7 @@ export default function SignInSide({ getLoggedInName }) {
     event.preventDefault();
     const data = { email, password };
 
-    const resp = await fetch(url, {
+    await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -38,7 +38,6 @@ export default function SignInSide({ getLoggedInName }) {
         if (result.user) {
           console.log(result.user.name + " :LOGADO!");
           setPassword("");
-          getLoggedInName(result.user.name);
           setUser(result.user.name);
           navigate("/");
         } else if (result === "Cannot find user") {
@@ -52,8 +51,6 @@ export default function SignInSide({ getLoggedInName }) {
       .catch((error) => {
         console.log("error.message: " + error.message);
       });
-
-    console.log(resp);
   };
 
   return (

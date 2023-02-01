@@ -10,7 +10,7 @@ import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-export default function AreaAppBar({ loggedinname }) {
+export default function AreaAppBar() {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const { user } = useContext(AuthContext);
@@ -38,7 +38,7 @@ export default function AreaAppBar({ loggedinname }) {
           </IconButton>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            PERSONAL FINANCE - {loggedinname} - {user}
+            PERSONAL FINANCE - {user}
           </Typography>
 
           <Button
