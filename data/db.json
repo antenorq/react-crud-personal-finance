@@ -15,42 +15,86 @@
       "password": "1234567"
     },
     {
+      "id": 3,
       "name": "Antenor",
+      "login": "antenor",
       "email": "antenorq@gmail.com",
-      "password": "$2a$10$i6TsQsTUXFp1kYVStJMoOOwcdqLyRQ.N3CoIMUmBDPKCqf4Zvgi7i",
-      "id": 3
+      "password": "$2a$10$i6TsQsTUXFp1kYVStJMoOOwcdqLyRQ.N3CoIMUmBDPKCqf4Zvgi7i"
     }
   ],
   "incomes": [
     {
       "id": 1,
       "category": 1,
-      "description": "income 1",
+      "description": "Salary 1",
       "value": "1000",
       "date": "22/02/1984"
     },
     {
       "id": 2,
-      "category": 2,
-      "description": "income 2",
+      "category": 1,
+      "description": "Salary 2",
       "value": "2000",
       "date": "15/02/2023"
+    },
+    {
+      "category": 1,
+      "description": "Igloo January",
+      "value": "911",
+      "date": "20/01/2023",
+      "id": 3
+    },
+    {
+      "category": 2,
+      "description": "Website done",
+      "value": "1200",
+      "date": "02/02/2023",
+      "id": 4
+    },
+    {
+      "category": 1,
+      "description": "qweqw",
+      "value": "911,00",
+      "date": "28 May 2022",
+      "id": 5
     }
   ],
   "expenses": [
     {
       "id": 1,
-      "category": 1,
-      "description": "expense 1",
-      "value": "10",
+      "category": 2,
+      "description": "rent 1",
+      "value": "2100",
       "date": "22/02/1984"
     },
     {
       "id": 2,
       "category": 2,
-      "description": "expense 2",
-      "value": "20",
+      "description": "rent 2",
+      "value": "2100",
       "date": "15/02/2023"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "category_type": 1,
+      "description": "Salary"
+    },
+    {
+      "id": 2,
+      "category_type": 1,
+      "description": "Free-lance"
+    },
+    {
+      "id": 3,
+      "category_type": 2,
+      "description": "House Rent"
+    },
+    {
+      "id": 4,
+      "category_type": 2,
+      "description": "Car Insurance"
     }
   ]
 }

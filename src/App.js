@@ -21,6 +21,7 @@ function App() {
       <Container maxWidth="xl" sx={{ p: 4 }}>
         <Routes>
           <Route path="/" element={user ? <Dashboard /> : <Login />} />
+          <Route path="*" element={user ? <Dashboard /> : <Login />} />
           <Route
             path="/income"
             element={user ? <Income /> : <Navigate to="/" />}

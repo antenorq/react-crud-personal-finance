@@ -12,17 +12,55 @@ import {
   Typography,
 } from "@mui/material";
 
+const url_categories = "http://localhost:3000/categories";
+const url_income = "http://localhost:3000/incomes";
+
 const Income = () => {
+  const [list_categories, setList_Categories] = useState([]);
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [value, setValue] = useState("");
   const [date, setDate] = useState("");
 
-  const data = { category, description, value, date };
+  //LOADING CATEGORIES SELECT
+  useEffect(() => {
+    const fetchData = async (e) => {
+      try {
+        const res = await fetch(url_categories);
+        const data_categories = await res.json();
+        setList_Categories(data_categories);
+      } catch (error) {
+        console.log("error do useEffect lista categorias: " + error.message);
+      }
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(data);
+    fetchData();
+  }, []);
+
+  //SUBMIT POST INCOME
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const data = { category, description, value, date };
+      const res = await fetch(url_income, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      console.log("resposta do fetch dentro do try: " + res.json());
+    } catch (error) {
+      console.log("error do catch do submit: " + error.message);
+    }
+
+    //
+
+    //clena the input after submit
+    setCategory("");
+    setDescription("");
+    setValue("");
+    setDate("");
   };
 
   return (
@@ -52,9 +90,11 @@ const Income = () => {
             label="Category"
             onChange={(e) => setCategory(e.target.value)}
           >
-            <MenuItem value={1}>Salary</MenuItem>
-            <MenuItem value={2}>Part-time</MenuItem>
-            <MenuItem value={3}>Freelance</MenuItem>
+            {list_categories.map((categ) => (
+              <MenuItem key={categ.id} value={categ.id}>
+                {categ.description}
+              </MenuItem>
+            ))}
           </Select>
 
           <TextField
@@ -69,7 +109,7 @@ const Income = () => {
           <TextField
             name="value"
             label="Value"
-            type="number"
+            type="text"
             required
             margin="normal"
             value={value}
