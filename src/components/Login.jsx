@@ -13,12 +13,14 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { NotificationContext } from "../context/NotificationContext";
 
 export default function SignInSide() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { setUser } = useContext(AuthContext);
+  const { setMessage, setTypeMessage } = useContext(NotificationContext);
 
   const navigate = useNavigate();
 
@@ -36,16 +38,20 @@ export default function SignInSide() {
       .then((res) => res.json())
       .then((result) => {
         if (result.user) {
-          console.log(result.user.name + " :LOGADO!");
+          setMessage("SUCCESSUFLY LOGED IN");
+          setTypeMessage("success");
           setPassword("");
           setUser(result.user.name);
           navigate("/");
         } else if (result === "Cannot find user") {
-          console.log(result + " :nao encontrou user from email");
+          setMessage("CANNOT FIND THIS EMAIL ");
+          setTypeMessage("error");
         } else if (result === "Incorrect password") {
-          console.log(result + " :senha errada");
+          setMessage("INCORRECT PASSWORD");
+          setTypeMessage("error");
         } else {
-          console.log(result);
+          setMessage("SOMETHING WENT WRONG");
+          setTypeMessage("error");
         }
       })
       .catch((error) => {

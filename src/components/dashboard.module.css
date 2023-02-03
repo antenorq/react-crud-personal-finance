@@ -1,6 +1,7 @@
 .paper {
   text-align: center;
+  background-color: #edf2f7 !important;
 }
 .paper:hover {
-  background-color: #ebebeb;
+  background-color: #bcd7e9 !important;
 }

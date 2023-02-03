@@ -1,5 +1,6 @@
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
+import Alert from "@mui/material/Alert";
 import AreaAppBar from "./components/AreaAppBar";
 import Login from "./components/Login";
 import Income from "./components/Income";
@@ -8,17 +9,31 @@ import Dashboard from "./components/Dashboard";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import { NotificationContext } from "./context/NotificationContext";
 
 import "./app.css";
 
 function App() {
   const { user } = useContext(AuthContext);
+  const { message, typemessage, setMessage } = useContext(NotificationContext);
+
+  setTimeout(() => {
+    setMessage(null);
+  }, 5000);
 
   return (
     <BrowserRouter>
       <CssBaseline />
       <AreaAppBar maxWidth="xl" />
-      <Container maxWidth="xl" sx={{ p: 4 }}>
+      <Container maxWidth="xl" sx={{ marginTop: "100px" }}>
+        {message && (
+          <Alert
+            severity={typemessage === "success" ? "success" : "error"}
+            sx={{ marginBottom: 2 }}
+          >
+            {message}
+          </Alert>
+        )}
         <Routes>
           <Route path="/" element={user ? <Dashboard /> : <Login />} />
           <Route path="*" element={user ? <Dashboard /> : <Login />} />

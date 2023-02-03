@@ -1,5 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { NotificationContext } from "../context/NotificationContext";
 import {
   TextField,
   Box,
@@ -22,6 +23,8 @@ const Income = () => {
   const [value, setValue] = useState("");
   const [date, setDate] = useState("");
 
+  const { setMessage, setTypeMessage } = useContext(NotificationContext);
+
   //LOADING CATEGORIES SELECT
   useEffect(() => {
     const fetchData = async (e) => {
@@ -30,17 +33,18 @@ const Income = () => {
         const data_categories = await res.json();
         setList_Categories(data_categories);
       } catch (error) {
-        console.log("error do useEffect lista categorias: " + error.message);
+        setMessage("SOMETHING WENT WRONG TO LOAD THE CATEGORIES: " + error);
+        setTypeMessage("error");
       }
     };
 
     fetchData();
-  }, []);
+  });
 
   //SUBMIT POST INCOME
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
       const data = { category, description, value, date };
       const res = await fetch(url_income, {
         method: "POST",
@@ -49,9 +53,17 @@ const Income = () => {
         },
         body: JSON.stringify(data),
       });
-      console.log("resposta do fetch dentro do try: " + res.json());
+
+      if (res.ok) {
+        setMessage("INCOME REGISTERED SUCCESSFULY");
+        setTypeMessage("success");
+      } else {
+        setMessage("SOMETHING WENT WRONG ");
+        setTypeMessage("error");
+      }
     } catch (error) {
-      console.log("error do catch do submit: " + error.message);
+      setMessage("SOMETHING WENT WRONG: " + error);
+      setTypeMessage("error");
     }
 
     //
@@ -66,16 +78,16 @@ const Income = () => {
   return (
     <Container
       maxWidth="sm"
-      sx={{ borderRadius: "8px", backgroundColor: "#fff", p: 4 }}
+      sx={{ borderRadius: "8px", backgroundColor: "#f7f7f7", p: 2 }}
     >
       <Typography
         align="center"
         color="success.light"
-        variant="h3"
+        variant="h4"
         component="h2"
         gutterBottom
       >
-        Income
+        income
       </Typography>
       <Box
         component="form"
@@ -89,6 +101,7 @@ const Income = () => {
             value={category}
             label="Category"
             onChange={(e) => setCategory(e.target.value)}
+            sx={{ backgroundColor: "#fff" }}
           >
             {list_categories.map((categ) => (
               <MenuItem key={categ.id} value={categ.id}>
@@ -105,6 +118,7 @@ const Income = () => {
             margin="normal"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            sx={{ backgroundColor: "#fff" }}
           />
           <TextField
             name="value"
@@ -114,6 +128,7 @@ const Income = () => {
             margin="normal"
             value={value}
             onChange={(e) => setValue(e.target.value)}
+            sx={{ backgroundColor: "#fff" }}
           />
           <TextField
             name="date"
@@ -123,6 +138,7 @@ const Income = () => {
             margin="normal"
             value={date}
             onChange={(e) => setDate(e.target.value)}
+            sx={{ backgroundColor: "#fff" }}
           />
           <Button
             type="submit"

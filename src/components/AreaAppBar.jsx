@@ -25,7 +25,7 @@ export default function AreaAppBar() {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton
             sx={{ mr: 2, color: "#fff", display: { xs: "flex", md: "flex" } }}

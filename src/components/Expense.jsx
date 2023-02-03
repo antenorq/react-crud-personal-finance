@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   TextField,
   Box,
@@ -28,16 +28,16 @@ const Expense = () => {
   return (
     <Container
       maxWidth="sm"
-      sx={{ borderRadius: "8px", backgroundColor: "#fff", p: 4 }}
+      sx={{ borderRadius: "8px", backgroundColor: "#f7f7f7", p: 2 }}
     >
       <Typography
         align="center"
         color="error.light"
-        variant="h3"
+        variant="h4"
         component="h2"
         gutterBottom
       >
-        Expense
+        expense
       </Typography>
       <Box
         component="form"
@@ -51,6 +51,7 @@ const Expense = () => {
             value={category}
             label="Category"
             onChange={(e) => setCategory(e.target.value)}
+            sx={{ backgroundColor: "#fff" }}
           >
             <MenuItem value={1}>Rent</MenuItem>
             <MenuItem value={2}>Grocery</MenuItem>
@@ -65,6 +66,7 @@ const Expense = () => {
             margin="normal"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            sx={{ backgroundColor: "#fff" }}
           />
           <TextField
             name="value"
@@ -74,6 +76,7 @@ const Expense = () => {
             margin="normal"
             value={value}
             onChange={(e) => setValue(e.target.value)}
+            sx={{ backgroundColor: "#fff" }}
           />
           <TextField
             name="date"
@@ -83,6 +86,7 @@ const Expense = () => {
             margin="normal"
             value={date}
             onChange={(e) => setDate(e.target.value)}
+            sx={{ backgroundColor: "#fff" }}
           />
           <Button
             type="submit"
