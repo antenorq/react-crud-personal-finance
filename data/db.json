@@ -50,48 +50,6 @@
       "value": "1200",
       "date": "02/02/2023",
       "id": 4
-    },
-    {
-      "category": 1,
-      "description": "qweqw",
-      "value": "911,00",
-      "date": "28 May 2022",
-      "id": 5
-    },
-    {
-      "category": 3,
-      "description": "asad",
-      "value": "asda",
-      "date": "asdas",
-      "id": 6
-    },
-    {
-      "category": 2,
-      "description": "asda",
-      "value": "asd",
-      "date": "asd",
-      "id": 7
-    },
-    {
-      "category": 2,
-      "description": "qweqw",
-      "value": "qweqw",
-      "date": "qweqw",
-      "id": 8
-    },
-    {
-      "category": "",
-      "description": "qqqqqqqqqq",
-      "value": "qqqqqqqqq",
-      "date": "qqqqqqqqqq",
-      "id": 9
-    },
-    {
-      "category": 1,
-      "description": "ppppp",
-      "value": "ppppppp",
-      "date": "ppppppp",
-      "id": 10
     }
   ],
   "expenses": [

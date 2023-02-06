@@ -7,7 +7,7 @@ import Income from "./components/Income";
 import Expense from "./components/Expense";
 import Dashboard from "./components/Dashboard";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { NotificationContext } from "./context/NotificationContext";
 
@@ -17,9 +17,12 @@ function App() {
   const { user } = useContext(AuthContext);
   const { message, typemessage, setMessage } = useContext(NotificationContext);
 
-  setTimeout(() => {
-    setMessage(null);
-  }, 5000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMessage(null);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [message]);
 
   return (
     <BrowserRouter>

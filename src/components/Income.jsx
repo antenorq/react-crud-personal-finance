@@ -11,6 +11,7 @@ import {
   InputLabel,
   FormControl,
   Typography,
+  InputAdornment,
 } from "@mui/material";
 
 const url_categories = "http://localhost:3000/categories";
@@ -24,6 +25,12 @@ const Income = () => {
   const [date, setDate] = useState("");
 
   const { setMessage, setTypeMessage } = useContext(NotificationContext);
+
+  const CADDollar = new Intl.NumberFormat("en-CA", {
+    style: "currency",
+    currency: "CAD",
+    signDisplay: "never",
+  });
 
   //LOADING CATEGORIES SELECT
   useEffect(() => {
@@ -39,7 +46,7 @@ const Income = () => {
     };
 
     fetchData();
-  });
+  }, []);
 
   //SUBMIT POST INCOME
   const handleSubmit = async (e) => {
@@ -68,7 +75,7 @@ const Income = () => {
 
     //
 
-    //clena the input after submit
+    //clean the input after submit
     setCategory("");
     setDescription("");
     setValue("");
@@ -109,7 +116,6 @@ const Income = () => {
               </MenuItem>
             ))}
           </Select>
-
           <TextField
             name="description"
             label="Description"
@@ -127,7 +133,12 @@ const Income = () => {
             required
             margin="normal"
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">$</InputAdornment>
+              ),
+            }}
+            onChange={(e) => setValue(CADDollar.format(e.target.value))}
             sx={{ backgroundColor: "#fff" }}
           />
           <TextField
@@ -148,6 +159,7 @@ const Income = () => {
           >
             Submit
           </Button>
+          {console.log(CADDollar.format(value))}
         </FormControl>
       </Box>
     </Container>
