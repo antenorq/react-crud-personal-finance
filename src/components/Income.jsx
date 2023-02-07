@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { NotificationContext } from "../context/NotificationContext";
+import { NumericFormat } from "react-number-format";
 import {
   TextField,
   Box,
@@ -25,12 +26,6 @@ const Income = () => {
   const [date, setDate] = useState("");
 
   const { setMessage, setTypeMessage } = useContext(NotificationContext);
-
-  const CADDollar = new Intl.NumberFormat("en-CA", {
-    style: "currency",
-    currency: "CAD",
-    signDisplay: "never",
-  });
 
   //LOADING CATEGORIES SELECT
   useEffect(() => {
@@ -126,6 +121,25 @@ const Income = () => {
             onChange={(e) => setDescription(e.target.value)}
             sx={{ backgroundColor: "#fff" }}
           />
+          <NumericFormat
+            customInput={TextField}
+            name="value"
+            label="Value"
+            inputMode="numeric"
+            required
+            margin="normal"
+            value={value}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">$</InputAdornment>
+              ),
+            }}
+            onChange={(e) => setValue(e.target.value)}
+            sx={{ backgroundColor: "#fff" }}
+            thousandSeparator={true}
+            decimalScale={2}
+          />
+          {/*
           <TextField
             name="value"
             label="Value"
@@ -138,9 +152,10 @@ const Income = () => {
                 <InputAdornment position="start">$</InputAdornment>
               ),
             }}
-            onChange={(e) => setValue(CADDollar.format(e.target.value))}
+            onChange={(e) => setValue(e.target.value)}
             sx={{ backgroundColor: "#fff" }}
           />
+          */}
           <TextField
             name="date"
             label="Date"
@@ -151,6 +166,7 @@ const Income = () => {
             onChange={(e) => setDate(e.target.value)}
             sx={{ backgroundColor: "#fff" }}
           />
+          <NumericFormat value={12323} customInput={TextField} />
           <Button
             type="submit"
             variant="contained"
@@ -159,7 +175,6 @@ const Income = () => {
           >
             Submit
           </Button>
-          {console.log(CADDollar.format(value))}
         </FormControl>
       </Box>
     </Container>
