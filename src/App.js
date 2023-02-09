@@ -30,10 +30,7 @@ function App() {
       <AreaAppBar maxWidth="xl" />
       <Container maxWidth="xl" sx={{ marginTop: "100px" }}>
         {message && (
-          <Alert
-            severity={typemessage === "success" ? "success" : "error"}
-            sx={{ marginBottom: 2 }}
-          >
+          <Alert severity={typemessage} sx={{ mb: 2 }}>
             {message}
           </Alert>
         )}

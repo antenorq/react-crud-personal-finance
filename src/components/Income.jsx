@@ -1,7 +1,7 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
-import { NotificationContext } from "../context/NotificationContext";
+import { useState, useEffect } from "react";
 import { NumericFormat } from "react-number-format";
+import Message from "./Message";
 import {
   TextField,
   Box,
@@ -15,6 +15,10 @@ import {
   InputAdornment,
 } from "@mui/material";
 
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+
 const url_categories = "http://localhost:3000/categories";
 const url_income = "http://localhost:3000/incomes";
 
@@ -23,9 +27,9 @@ const Income = () => {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [value, setValue] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(null);
 
-  const { setMessage, setTypeMessage } = useContext(NotificationContext);
+  const { setMessage, setTypeMessage } = Message();
 
   //LOADING CATEGORIES SELECT
   useEffect(() => {
@@ -35,7 +39,7 @@ const Income = () => {
         const data_categories = await res.json();
         setList_Categories(data_categories);
       } catch (error) {
-        setMessage("SOMETHING WENT WRONG TO LOAD THE CATEGORIES: " + error);
+        setMessage("SOMETHING WENT WRONG TO LOAD THE CATEGORIES:" + error);
         setTypeMessage("error");
       }
     };
@@ -60,7 +64,7 @@ const Income = () => {
         setMessage("INCOME REGISTERED SUCCESSFULY");
         setTypeMessage("success");
       } else {
-        setMessage("SOMETHING WENT WRONG ");
+        setMessage("SOMETHING WENT WRONG");
         setTypeMessage("error");
       }
     } catch (error) {
@@ -68,13 +72,11 @@ const Income = () => {
       setTypeMessage("error");
     }
 
-    //
-
     //clean the input after submit
     setCategory("");
     setDescription("");
     setValue("");
-    setDate("");
+    setDate(null);
   };
 
   return (
@@ -139,34 +141,25 @@ const Income = () => {
             thousandSeparator={true}
             decimalScale={2}
           />
-          {/*
-          <TextField
-            name="value"
-            label="Value"
-            type="text"
-            required
-            margin="normal"
-            value={value}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">$</InputAdornment>
-              ),
-            }}
-            onChange={(e) => setValue(e.target.value)}
-            sx={{ backgroundColor: "#fff" }}
-          />
-          */}
-          <TextField
-            name="date"
-            label="Date"
-            type="text"
-            required
-            margin="normal"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            sx={{ backgroundColor: "#fff" }}
-          />
-          <NumericFormat value={12323} customInput={TextField} />
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <MobileDatePicker
+              value={date}
+              onChange={(newDate) => {
+                setDate(newDate);
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  margin="normal"
+                  name="date"
+                  label="Date"
+                  required
+                  sx={{ backgroundColor: "#fff" }}
+                />
+              )}
+            />
+          </LocalizationProvider>
+
           <Button
             type="submit"
             variant="contained"

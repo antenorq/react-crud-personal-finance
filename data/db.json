@@ -50,6 +50,132 @@
       "value": "1200",
       "date": "02/02/2023",
       "id": 4
+    },
+    {
+      "category": 3,
+      "description": "Bike accessories ",
+      "value": "15.20",
+      "date": "28 May 2022",
+      "id": 5
+    },
+    {
+      "category": 1,
+      "description": "kkkkkkkkk",
+      "value": "1,550.35",
+      "date": "2023-03-06T05:00:00.000Z",
+      "id": 6
+    },
+    {
+      "category": 1,
+      "description": "eeeeeee",
+      "value": "250.00",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 7
+    },
+    {
+      "category": 3,
+      "description": "rent house",
+      "value": "2,150",
+      "date": "2023-02-01T05:00:00.000Z",
+      "id": 8
+    },
+    {
+      "category": 2,
+      "description": "asd",
+      "value": "88",
+      "date": "2023-02-07T05:00:00.000Z",
+      "id": 9
+    },
+    {
+      "category": 2,
+      "description": "asas",
+      "value": "747",
+      "date": "2023-02-08T05:00:00.000Z",
+      "id": 10
+    },
+    {
+      "category": 2,
+      "description": "asas",
+      "value": "44,141,400.00",
+      "date": "2023-02-10T05:00:00.000Z",
+      "id": 11
+    },
+    {
+      "category": "",
+      "description": "Bike accessories ",
+      "value": "111,111",
+      "date": "2023-02-21T05:00:00.000Z",
+      "id": 12
+    },
+    {
+      "category": 2,
+      "description": "Bike accessories ",
+      "value": "91,100",
+      "date": "2023-02-21T05:00:00.000Z",
+      "id": 13
+    },
+    {
+      "category": 2,
+      "description": "sa",
+      "value": "91,100",
+      "date": "2023-02-15T05:00:00.000Z",
+      "id": 14
+    },
+    {
+      "category": 2,
+      "description": "asdas",
+      "value": "1,200",
+      "date": "2023-02-09T05:00:00.000Z",
+      "id": 15
+    },
+    {
+      "category": 1,
+      "description": "asas",
+      "value": "414,141",
+      "date": "2023-02-09T05:00:00.000Z",
+      "id": 16
+    },
+    {
+      "category": 1,
+      "description": "qweqw",
+      "value": "91,100",
+      "date": "2023-02-28T05:00:00.000Z",
+      "id": 17
+    },
+    {
+      "category": 1,
+      "description": "asas",
+      "value": "91,100",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 18
+    },
+    {
+      "category": 1,
+      "description": "Bike accessories ",
+      "value": "91,100",
+      "date": "2023-02-21T05:00:00.000Z",
+      "id": 19
+    },
+    {
+      "category": 2,
+      "description": "asas",
+      "value": "1,111",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 20
+    },
+    {
+      "category": 1,
+      "description": "qqqq",
+      "value": "1,200",
+      "date": "2023-02-16T05:00:00.000Z",
+      "id": 21
+    },
+    {
+      "category": 1,
+      "description": "qqqqq",
+      "value": "8,888",
+      "date": "2023-02-08T05:00:00.000Z",
+      "id": 22
     }
   ],
   "expenses": [
@@ -66,6 +192,13 @@
       "description": "rent 2",
       "value": "2100",
       "date": "15/02/2023"
+    },
+    {
+      "category": 4,
+      "description": "segyuro carro",
+      "value": "253",
+      "date": "2023-02-01T05:00:00.000Z",
+      "id": 3
     }
   ],
   "categories": [

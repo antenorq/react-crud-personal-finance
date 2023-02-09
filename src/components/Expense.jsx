@@ -1,5 +1,7 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { NotificationContext } from "../context/NotificationContext";
+import { NumericFormat } from "react-number-format";
 import {
   TextField,
   Box,
@@ -10,19 +12,73 @@ import {
   InputLabel,
   FormControl,
   Typography,
+  InputAdornment,
 } from "@mui/material";
 
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+
+const url_categories = "http://localhost:3000/categories";
+const url_income = "http://localhost:3000/expenses";
+
 const Expense = () => {
+  const [list_categories, setList_Categories] = useState([]);
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [value, setValue] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(null);
 
-  const data = { category, description, value, date };
+  const { setMessage, setTypeMessage } = useContext(NotificationContext);
 
-  const handleSubmit = (e) => {
+  //LOADING CATEGORIES SELECT
+  useEffect(() => {
+    const fetchData = async (e) => {
+      try {
+        const res = await fetch(url_categories);
+        const data_categories = await res.json();
+        setList_Categories(data_categories);
+      } catch (error) {
+        setMessage("SOMETHING WENT WRONG TO LOAD THE CATEGORIES: " + error);
+        setTypeMessage("error");
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  //SUBMIT POST EXPENSE
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
+    try {
+      const data = { category, description, value, date };
+      const res = await fetch(url_income, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        setMessage("EXPENSE REGISTERED SUCCESSFULY");
+        setTypeMessage("success");
+      } else {
+        setMessage("SOMETHING WENT WRONG ");
+        setTypeMessage("error");
+      }
+    } catch (error) {
+      setMessage("SOMETHING WENT WRONG: " + error);
+      setTypeMessage("error");
+    }
+
+    //
+
+    //clean the input after submit
+    setCategory("");
+    setDescription("");
+    setValue("");
+    setDate(null);
   };
 
   return (
@@ -53,11 +109,12 @@ const Expense = () => {
             onChange={(e) => setCategory(e.target.value)}
             sx={{ backgroundColor: "#fff" }}
           >
-            <MenuItem value={1}>Rent</MenuItem>
-            <MenuItem value={2}>Grocery</MenuItem>
-            <MenuItem value={3}>Car Insurance</MenuItem>
+            {list_categories.map((categ) => (
+              <MenuItem key={categ.id} value={categ.id}>
+                {categ.description}
+              </MenuItem>
+            ))}
           </Select>
-
           <TextField
             name="description"
             label="Description"
@@ -68,26 +125,43 @@ const Expense = () => {
             onChange={(e) => setDescription(e.target.value)}
             sx={{ backgroundColor: "#fff" }}
           />
-          <TextField
+          <NumericFormat
+            customInput={TextField}
             name="value"
             label="Value"
-            type="number"
+            inputMode="numeric"
             required
             margin="normal"
             value={value}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">$</InputAdornment>
+              ),
+            }}
             onChange={(e) => setValue(e.target.value)}
             sx={{ backgroundColor: "#fff" }}
+            thousandSeparator={true}
+            decimalScale={2}
           />
-          <TextField
-            name="date"
-            label="Date"
-            type="text"
-            required
-            margin="normal"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            sx={{ backgroundColor: "#fff" }}
-          />
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <MobileDatePicker
+              value={date}
+              onChange={(newDate) => {
+                setDate(newDate);
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  margin="normal"
+                  name="date"
+                  label="Date"
+                  required
+                  sx={{ backgroundColor: "#fff" }}
+                />
+              )}
+            />
+          </LocalizationProvider>
+
           <Button
             type="submit"
             variant="contained"

@@ -50,7 +50,7 @@ export default function SignInSide() {
           setMessage("INCORRECT PASSWORD");
           setTypeMessage("error");
         } else {
-          setMessage("SOMETHING WENT WRONG");
+          setMessage(result);
           setTypeMessage("error");
         }
       })
