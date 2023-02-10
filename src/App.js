@@ -1,10 +1,11 @@
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Alert from "@mui/material/Alert";
+import LinearProgress from "@mui/material/LinearProgress";
 import AreaAppBar from "./components/AreaAppBar";
 import Login from "./components/Login";
-import Income from "./components/Income";
-import Expense from "./components/Expense";
+import Income from "./pages/Income";
+import Expense from "./pages/Expense";
 import Dashboard from "./components/Dashboard";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
@@ -28,7 +29,8 @@ function App() {
     <BrowserRouter>
       <CssBaseline />
       <AreaAppBar maxWidth="xl" />
-      <Container maxWidth="xl" sx={{ marginTop: "100px" }}>
+      <Container maxWidth="xl" sx={{ mt: "100px" }}>
+        <LinearProgress sx={{ mb: "30px" }} />
         {message && (
           <Alert severity={typemessage} sx={{ mb: 2 }}>
             {message}
