@@ -3,7 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Alert from "@mui/material/Alert";
 import LinearProgress from "@mui/material/LinearProgress";
 import AreaAppBar from "./components/AreaAppBar";
-import Login from "./components/Login";
+import Login from "./pages/Login";
 import Income from "./pages/Income";
 import Expense from "./pages/Expense";
 import Dashboard from "./components/Dashboard";
