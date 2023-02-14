@@ -61,7 +61,9 @@ const Income = () => {
       {/*FORM GENERIC TO SHOW INCOME FORM*/}
       <FormIncomeExpense formType="income" url={url_income} />
       <br></br>
-      <DataGrid rows={rows} columns={columns} />
+      <div style={{ height: 300, width: "100%" }}>
+        <DataGrid rows={rows} columns={columns} />
+      </div>
     </Container>
   );
 };
