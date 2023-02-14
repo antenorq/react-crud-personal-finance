@@ -9,6 +9,7 @@ import TemporaryDrawer from "../components/Drawer";
 import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import LinearProgress from "@mui/material/LinearProgress";
 
 export default function AreaAppBar() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -71,6 +72,7 @@ export default function AreaAppBar() {
             Login
           </Button>
         </Toolbar>
+        <LinearProgress />
       </AppBar>
       <TemporaryDrawer
         openDrawer={openDrawer}

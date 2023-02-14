@@ -6,7 +6,7 @@ const url_expense = "http://localhost:3000/expenses";
 const Expense = () => {
   return (
     <Container
-      maxWidth="sm"
+      maxWidth="xl"
       sx={{ borderRadius: "8px", backgroundColor: "#f7f7f7", p: 2 }}
     >
       {/*FORM GENERIC TO SHOW EXPENSE FORM*/}

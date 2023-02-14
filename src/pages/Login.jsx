@@ -13,14 +13,16 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { NotificationContext } from "../context/NotificationContext";
+import useNotification from "../hooks/useNotification";
 
 export default function SignInSide() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { setUser } = useContext(AuthContext);
-  const { setMessage, setTypeMessage } = useContext(NotificationContext);
+
+  //HOOK Notification
+  const { setNotification } = useNotification();
 
   const navigate = useNavigate();
 
@@ -38,20 +40,16 @@ export default function SignInSide() {
       .then((res) => res.json())
       .then((result) => {
         if (result.user) {
-          setMessage("SUCCESSUFLY LOGED IN");
-          setTypeMessage("success");
+          setNotification("SUCCESSUFLY LOGED IN", "success");
           setPassword("");
           setUser(result.user.name);
           navigate("/");
         } else if (result === "Cannot find user") {
-          setMessage("CANNOT FIND THIS EMAIL ");
-          setTypeMessage("error");
+          setNotification("CANNOT FIND THIS EMAIL", "error");
         } else if (result === "Incorrect password") {
-          setMessage("INCORRECT PASSWORD");
-          setTypeMessage("error");
+          setNotification("INCORRECT PASSWORD", "error");
         } else {
-          setMessage(result);
-          setTypeMessage("error");
+          setNotification(result, "error");
         }
       })
       .catch((error) => {

@@ -1,12 +1,12 @@
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Alert from "@mui/material/Alert";
-import LinearProgress from "@mui/material/LinearProgress";
+
 import AreaAppBar from "./components/AreaAppBar";
 import Login from "./pages/Login";
 import Income from "./pages/Income";
 import Expense from "./pages/Expense";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./pages/Dashboard";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
@@ -30,7 +30,6 @@ function App() {
       <CssBaseline />
       <AreaAppBar maxWidth="xl" />
       <Container maxWidth="xl" sx={{ mt: "100px" }}>
-        <LinearProgress sx={{ mb: "30px" }} />
         {message && (
           <Alert severity={typemessage} sx={{ mb: 2 }}>
             {message}
