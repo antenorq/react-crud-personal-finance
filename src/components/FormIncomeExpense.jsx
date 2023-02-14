@@ -24,14 +24,16 @@ const FormIncomeExpense = ({ formType, url }) => {
   const [date, setDate] = useState(null);
 
   //HOOK Notification
-  const { setNotification } = useNotification();
+  const { setNotification, showLoading } = useNotification();
 
   //HOOK LOADING CATEGORIES SELECT
   const categories = useLoadCategories();
 
   //SUBMIT POST INCOME
   const handleSubmit = async (e) => {
+    showLoading(true);
     e.preventDefault();
+
     try {
       const data = { category, description, value, date };
       const res = await fetch(url, {
@@ -44,6 +46,7 @@ const FormIncomeExpense = ({ formType, url }) => {
 
       if (res.ok) {
         setNotification(formType + " REGISTERED SUCCESSFULY", "success");
+        showLoading(false);
       } else {
         setNotification("SOMETHING WENT WRONG", "error");
       }
@@ -56,6 +59,7 @@ const FormIncomeExpense = ({ formType, url }) => {
     setDescription("");
     setValue("");
     setDate(null);
+    showLoading(false);
   };
 
   return (
@@ -82,8 +86,10 @@ const FormIncomeExpense = ({ formType, url }) => {
                 select
                 value={category}
                 label="Category"
+                required
+                margin="normal"
                 onChange={(e) => setCategory(e.target.value)}
-                sx={{ backgroundColor: "#fff", width: "100%", mt: "16px" }}
+                sx={{ backgroundColor: "#fff", width: "100%" }}
               >
                 {categories &&
                   categories.map((categ) => (

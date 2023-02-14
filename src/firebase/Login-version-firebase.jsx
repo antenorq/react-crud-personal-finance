@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Box, Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { async } from "@firebase/util";
-import { db } from "../firebase/config";
+import { db } from "./config";
 import {
   getAuth,
   createUserWithEmailAndPassword,

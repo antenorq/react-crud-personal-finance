@@ -1,7 +1,6 @@
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Alert from "@mui/material/Alert";
-
 import AreaAppBar from "./components/AreaAppBar";
 import Login from "./pages/Login";
 import Income from "./pages/Income";
@@ -16,11 +15,13 @@ import "./app.css";
 
 function App() {
   const { user } = useContext(AuthContext);
-  const { message, typemessage, setMessage } = useContext(NotificationContext);
+  const { message, typemessage, setMessage, loading, setLoading } =
+    useContext(NotificationContext);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setMessage(null);
+      setLoading(true);
     }, 5000);
     return () => clearTimeout(timer);
   }, [message]);

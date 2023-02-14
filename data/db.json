@@ -92,6 +92,20 @@
       "value": "3600.00",
       "date": "2023-02-15T05:00:00.000Z",
       "id": 10
+    },
+    {
+      "category": 4,
+      "description": "car",
+      "value": "250",
+      "date": "2023-02-15T05:00:00.000Z",
+      "id": 11
+    },
+    {
+      "category": 2,
+      "description": "Bike accessories ",
+      "value": "91100",
+      "date": "2023-02-16T05:00:00.000Z",
+      "id": 12
     }
   ],
   "expenses": [

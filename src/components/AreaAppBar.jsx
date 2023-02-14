@@ -10,11 +10,15 @@ import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import LinearProgress from "@mui/material/LinearProgress";
+import useNotification from "../hooks/useNotification";
 
 export default function AreaAppBar() {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const { user } = useContext(AuthContext);
+
+  //HOOK Notification
+  const { showLoading } = useNotification();
 
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
@@ -72,7 +76,8 @@ export default function AreaAppBar() {
             Login
           </Button>
         </Toolbar>
-        <LinearProgress />
+        LOADNG: {showLoading}
+        {showLoading && <LinearProgress />}
       </AppBar>
       <TemporaryDrawer
         openDrawer={openDrawer}
