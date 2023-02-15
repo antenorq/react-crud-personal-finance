@@ -31,6 +31,7 @@ const FormIncomeExpense = ({ formType, url }) => {
 
   //SUBMIT POST INCOME
   const handleSubmit = async (e) => {
+    //START LOADING
     showLoading(true);
     e.preventDefault();
 
@@ -50,6 +51,8 @@ const FormIncomeExpense = ({ formType, url }) => {
       } else {
         setNotification("SOMETHING WENT WRONG", "error");
       }
+      //END LOADING
+      showLoading(false);
     } catch (error) {
       setNotification("SOMETHING WENT WRONG: " + error, "error");
     }
@@ -59,7 +62,6 @@ const FormIncomeExpense = ({ formType, url }) => {
     setDescription("");
     setValue("");
     setDate(null);
-    showLoading(false);
   };
 
   return (

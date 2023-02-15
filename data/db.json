@@ -106,6 +106,27 @@
       "value": "91100",
       "date": "2023-02-16T05:00:00.000Z",
       "id": 12
+    },
+    {
+      "category": 4,
+      "description": "carro",
+      "value": "4000",
+      "date": "2023-02-04T05:00:00.000Z",
+      "id": 13
+    },
+    {
+      "category": 2,
+      "description": "PPPPPPP",
+      "value": "1001",
+      "date": "2023-02-01T05:00:00.000Z",
+      "id": 14
+    },
+    {
+      "category": 2,
+      "description": "asas",
+      "value": "91100",
+      "date": "2023-02-15T05:00:00.000Z",
+      "id": 15
     }
   ],
   "expenses": [

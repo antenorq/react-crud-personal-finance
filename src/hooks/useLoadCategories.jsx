@@ -6,14 +6,20 @@ const useLoadCategories = () => {
   const url_categories = "http://localhost:3000/categories";
 
   //HOOK Notification
-  const { setNotification } = useNotification();
+  const { setNotification, showLoading } = useNotification();
 
   useEffect(() => {
+    //START LOADING
+    showLoading(true);
+
     const fetchData = async (e) => {
       try {
         const res = await fetch(url_categories);
         const data_categories = await res.json();
         setCategories(data_categories);
+
+        //END LOADING
+        showLoading(false);
       } catch (error) {
         setNotification(
           "SOMETHING WENT WRONG TO LOAD THE CATEGORIES:" + error,

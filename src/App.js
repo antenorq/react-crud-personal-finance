@@ -15,13 +15,11 @@ import "./app.css";
 
 function App() {
   const { user } = useContext(AuthContext);
-  const { message, typemessage, setMessage, loading, setLoading } =
-    useContext(NotificationContext);
+  const { message, typemessage, setMessage } = useContext(NotificationContext);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setMessage(null);
-      setLoading(true);
     }, 5000);
     return () => clearTimeout(timer);
   }, [message]);

@@ -1,4 +1,3 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -18,7 +17,7 @@ export default function AreaAppBar() {
   const { user } = useContext(AuthContext);
 
   //HOOK Notification
-  const { showLoading } = useNotification();
+  const { loading } = useNotification();
 
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
@@ -76,8 +75,8 @@ export default function AreaAppBar() {
             Login
           </Button>
         </Toolbar>
-        LOADNG: {showLoading}
-        {showLoading && <LinearProgress />}
+        LOADING: {loading ? "true" : "false"}
+        {loading && <LinearProgress />}
       </AppBar>
       <TemporaryDrawer
         openDrawer={openDrawer}

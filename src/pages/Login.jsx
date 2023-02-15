@@ -22,17 +22,20 @@ export default function SignInSide() {
   const { setUser } = useContext(AuthContext);
 
   //HOOK Notification
-  const { setNotification } = useNotification();
+  const { setNotification, showLoading } = useNotification();
 
   const navigate = useNavigate();
 
   const url = "http://localhost:3000/login";
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
+    //START LOADING
+    showLoading(true);
+
     event.preventDefault();
     const data = { email, password };
 
-    await fetch(url, {
+    fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -51,6 +54,9 @@ export default function SignInSide() {
         } else {
           setNotification(result, "error");
         }
+
+        //END LOADING
+        showLoading(false);
       })
       .catch((error) => {
         console.log("error.message: " + error.message);
