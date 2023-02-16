@@ -11,13 +11,11 @@ const useNotification = () => {
   };
 
   const showLoading = (loading) => {
-    if (loading === true) {
-      setLoading(loading);
-    } else {
-      setTimeout(() => {
-        setLoading(loading);
-      }, 2000);
-    }
+    loading === true
+      ? setLoading(loading)
+      : setTimeout(() => {
+          setLoading(loading);
+        }, 2000);
   };
 
   return {

@@ -75,7 +75,6 @@ export default function AreaAppBar() {
             Login
           </Button>
         </Toolbar>
-        LOADING: {loading ? "true" : "false"}
         {loading && <LinearProgress />}
       </AppBar>
       <TemporaryDrawer

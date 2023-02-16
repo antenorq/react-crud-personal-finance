@@ -10,14 +10,12 @@ const Income = () => {
       maxWidth="xl"
       sx={{
         borderRadius: "8px",
-        backgroundColor: "#f7f7f7",
+        bgcolor: "#f7f7f7",
         p: 2,
       }}
     >
       {/*FORM GENERIC TO SHOW INCOME FORM*/}
       <FormIncomeExpense formType="income" url={url_income} />
-      <br />
-      <br />
       <ShowDataGrid url={url_income} />
     </Container>
   );

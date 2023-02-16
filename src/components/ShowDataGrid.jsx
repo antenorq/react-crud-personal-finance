@@ -5,17 +5,60 @@ import {
   GridColDef,
   GridToolbar,
 } from "@mui/x-data-grid";
-
-const columns = [
-  { field: "id", headerName: "ID" },
-  { field: "category", headerName: "Category", flex: 1 },
-  { field: "description", headerName: "Description", flex: 1 },
-  { field: "value", headerName: "Value", flex: 0.5 },
-  { field: "date", headerName: "Date", flex: 1 },
-];
+import { Button } from "@mui/material";
 
 const ShowDataGrid = ({ url }) => {
   const [tableData, setTableData] = useState([]);
+  const [clickedRow, setClickedRow] = useState();
+
+  const onEditClick = (e, row) => {
+    setClickedRow(row);
+
+    console.log(clickedRow);
+  };
+
+  const onDeleteClick = (e, row) => {
+    setClickedRow(row);
+  };
+
+  const columns = [
+    { field: "id", headerName: "ID", flex: 0.5 },
+    { field: "category", headerName: "Category", flex: 1 },
+    { field: "description", headerName: "Description", flex: 1 },
+    { field: "value", headerName: "Value", flex: 0.5 },
+    { field: "date", headerName: "Date", flex: 1 },
+    {
+      field: "Actions",
+      headerName: "Actions",
+      sortable: false,
+      flex: 1,
+      align: "right",
+      renderCell: (params) => {
+        return (
+          <>
+            <Button
+              onClick={(e) => onEditClick(e, params.row)}
+              variant="contained"
+              color="primary"
+              size="small"
+              sx={{ mr: 1 }}
+            >
+              Edit
+            </Button>
+
+            <Button
+              onClick={(e) => onDeleteClick(e, params.row)}
+              variant="contained"
+              color="error"
+              size="small"
+            >
+              Delete
+            </Button>
+          </>
+        );
+      },
+    },
+  ];
 
   useEffect(() => {
     fetch(url)
@@ -24,7 +67,7 @@ const ShowDataGrid = ({ url }) => {
   }, []);
 
   return (
-    <div style={{ height: 500 }}>
+    <div style={{ height: 500, marginTop: "30px" }}>
       <DataGrid
         rows={tableData}
         columns={columns}
@@ -37,6 +80,7 @@ const ShowDataGrid = ({ url }) => {
         }}
         sx={{ backgroundColor: "#fff" }}
       />
+      clickedRow: {clickedRow ? clickedRow.id : null}
     </div>
   );
 };
