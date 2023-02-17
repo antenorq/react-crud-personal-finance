@@ -6,20 +6,28 @@ import {
   GridToolbar,
 } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
+import LinearProgress from "@mui/material/LinearProgress";
+import useNotification from "../hooks/useNotification";
 
-const ShowDataGrid = ({ url }) => {
+const ShowDataGrid = ({ url, formState }) => {
   const [tableData, setTableData] = useState([]);
-  const [clickedRow, setClickedRow] = useState();
+
+  //HOOK Notification
+  const { loading, showLoading } = useNotification();
+
+  {
+    console.log("formState:" + formState.date);
+  }
 
   const onEditClick = (e, row) => {
-    setClickedRow(row);
-
-    console.log(clickedRow);
+    formState.setId(row.id);
+    formState.setCategory(row.category);
+    formState.setDescription(row.description);
+    formState.setValue(row.value);
+    formState.setDate(row.date);
   };
 
-  const onDeleteClick = (e, row) => {
-    setClickedRow(row);
-  };
+  const onDeleteClick = (e, row) => {};
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
@@ -61,9 +69,13 @@ const ShowDataGrid = ({ url }) => {
   ];
 
   useEffect(() => {
+    showLoading(true);
+
     fetch(url)
       .then((data) => data.json())
       .then((data) => setTableData(data));
+
+    showLoading(false);
   }, []);
 
   return (
@@ -71,16 +83,22 @@ const ShowDataGrid = ({ url }) => {
       <DataGrid
         rows={tableData}
         columns={columns}
-        components={{ Toolbar: GridToolbar }}
+        components={{ Toolbar: GridToolbar, LoadingOverlay: LinearProgress }}
+        loading={loading ? true : false}
         componentsProps={{
           toolbar: {
             showQuickFilter: true,
             quickFilterProps: { debounceMs: 500 },
+            color: "red",
           },
         }}
-        sx={{ backgroundColor: "#fff" }}
+        initialState={{
+          sorting: {
+            sortModel: [{ field: "id", sort: "desc" }],
+          },
+        }}
+        sx={{ backgroundColor: "#fff", overflowY: "scroll" }}
       />
-      clickedRow: {clickedRow ? clickedRow.id : null}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NumericFormat } from "react-number-format";
 import useNotification from "../hooks/useNotification";
 import useLoadCategories from "../hooks/useLoadCategories";
+import ShowDataGrid from "../components/ShowDataGrid";
 import {
   TextField,
   Box,
@@ -18,10 +19,24 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 
 const FormIncomeExpense = ({ formType, url }) => {
+  const [id, setId] = useState(null);
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [value, setValue] = useState("");
   const [date, setDate] = useState(null);
+
+  const formState = {
+    id,
+    setId,
+    category,
+    setCategory,
+    description,
+    setDescription,
+    value,
+    setValue,
+    date,
+    setDate,
+  };
 
   //HOOK Notification
   const { setNotification, showLoading } = useNotification();
@@ -29,10 +44,11 @@ const FormIncomeExpense = ({ formType, url }) => {
   //HOOK LOADING CATEGORIES SELECT
   const categories = useLoadCategories();
 
-  //SUBMIT POST INCOME
+  //POST/EDIT INCOME OR EXPENSE
   const handleSubmit = async (e) => {
     //START LOADING
     showLoading(true);
+
     e.preventDefault();
 
     try {
@@ -47,7 +63,6 @@ const FormIncomeExpense = ({ formType, url }) => {
 
       if (res.ok) {
         setNotification(formType + " REGISTERED SUCCESSFULY", "success");
-        showLoading(false);
       } else {
         setNotification("SOMETHING WENT WRONG", "error");
       }
@@ -75,6 +90,8 @@ const FormIncomeExpense = ({ formType, url }) => {
       >
         {formType}
       </Typography>
+
+      {/* FORM INCOME OR EXPENSE */}
       <Box component="form" onSubmit={handleSubmit}>
         <FormControl fullWidth>
           <Grid
@@ -170,6 +187,9 @@ const FormIncomeExpense = ({ formType, url }) => {
           </Grid>
         </FormControl>
       </Box>
+
+      {/* MUI DATAGRID */}
+      <ShowDataGrid url={url} formState={formState} />
     </>
   );
 };

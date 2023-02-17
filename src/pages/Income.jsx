@@ -1,6 +1,5 @@
 import FormIncomeExpense from "../components/FormIncomeExpense";
 import Container from "@mui/material/Container";
-import ShowDataGrid from "../components/ShowDataGrid";
 
 const url_income = "http://localhost:3000/incomes";
 
@@ -16,7 +15,6 @@ const Income = () => {
     >
       {/*FORM GENERIC TO SHOW INCOME FORM*/}
       <FormIncomeExpense formType="income" url={url_income} />
-      <ShowDataGrid url={url_income} />
     </Container>
   );
 };
