@@ -16,7 +16,7 @@ const ShowDataGrid = ({ url, formState }) => {
   const { loading, showLoading } = useNotification();
 
   {
-    console.log("formState:" + formState.date);
+    console.log("formState:" + formState.id);
   }
 
   const onEditClick = (e, row) => {

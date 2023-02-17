@@ -48,8 +48,11 @@ const FormIncomeExpense = ({ formType, url }) => {
   const handleSubmit = async (e) => {
     //START LOADING
     showLoading(true);
-
     e.preventDefault();
+
+    if (id) {
+      console.log("form com id setado: " + id);
+    }
 
     try {
       const data = { category, description, value, date };
@@ -62,9 +65,12 @@ const FormIncomeExpense = ({ formType, url }) => {
       });
 
       if (res.ok) {
-        setNotification(formType + " REGISTERED SUCCESSFULY", "success");
+        setNotification(
+          formType + " REGISTERED SUCCESSFULY:" + res.statusText,
+          "success"
+        );
       } else {
-        setNotification("SOMETHING WENT WRONG", "error");
+        setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
       }
       //END LOADING
       showLoading(false);
