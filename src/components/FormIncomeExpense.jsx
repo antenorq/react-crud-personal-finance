@@ -25,6 +25,8 @@ const FormIncomeExpense = ({ formType, url }) => {
   const [value, setValue] = useState("");
   const [date, setDate] = useState(null);
 
+  const [submitText, setSubmitText] = useState("SUBMIT");
+
   const formState = {
     id,
     setId,
@@ -36,6 +38,8 @@ const FormIncomeExpense = ({ formType, url }) => {
     setValue,
     date,
     setDate,
+    submitText,
+    setSubmitText,
   };
 
   //HOOK Notification
@@ -50,39 +54,66 @@ const FormIncomeExpense = ({ formType, url }) => {
     showLoading(true);
     e.preventDefault();
 
+    //IF HAVE ID EDIT - UPDATE - METHOD PUT
     if (id) {
-      console.log("form com id setado: " + id);
-    }
+      try {
+        const data = { id, category, description, value, date };
+        const res = await fetch(url + "/" + id, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
 
-    try {
-      const data = { category, description, value, date };
-      const res = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (res.ok) {
-        setNotification(
-          formType + " REGISTERED SUCCESSFULY:" + res.statusText,
-          "success"
-        );
-      } else {
-        setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
+        if (res.ok) {
+          setNotification(
+            formType + " UPDATED SUCCESSFULY:" + res.statusText,
+            "success"
+          );
+          setId(null);
+        } else {
+          setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
+        }
+        //END LOADING
+        showLoading(false);
+      } catch (error) {
+        setNotification("SOMETHING WENT WRONG: " + error, "error");
       }
-      //END LOADING
-      showLoading(false);
-    } catch (error) {
-      setNotification("SOMETHING WENT WRONG: " + error, "error");
     }
+    //IF NO ID - POST - CREATE - METHOD POST
+    else {
+      try {
+        const data = { category, description, value, date };
+        const res = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
 
+        if (res.ok) {
+          setNotification(
+            formType + " REGISTERED SUCCESSFULY:" + res.statusText,
+            "success"
+          );
+        } else {
+          setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
+        }
+        //END LOADING
+        showLoading(false);
+      } catch (error) {
+        setNotification("SOMETHING WENT WRONG: " + error, "error");
+      }
+    }
     //clear the input after submit
+    setId("");
     setCategory("");
     setDescription("");
     setValue("");
     setDate(null);
+    setSubmitText("SUBMIT");
   };
 
   return (
@@ -187,7 +218,7 @@ const FormIncomeExpense = ({ formType, url }) => {
                 size="large"
                 sx={{ marginTop: "18px", width: "100%", p: "12px" }}
               >
-                Submit
+                {submitText}
               </Button>
             </Grid>
           </Grid>

@@ -15,16 +15,13 @@ const ShowDataGrid = ({ url, formState }) => {
   //HOOK Notification
   const { loading, showLoading } = useNotification();
 
-  {
-    console.log("formState:" + formState.id);
-  }
-
   const onEditClick = (e, row) => {
     formState.setId(row.id);
     formState.setCategory(row.category);
     formState.setDescription(row.description);
     formState.setValue(row.value);
     formState.setDate(row.date);
+    formState.setSubmitText("EDIT");
   };
 
   const onDeleteClick = (e, row) => {};
@@ -76,7 +73,7 @@ const ShowDataGrid = ({ url, formState }) => {
       .then((data) => setTableData(data));
 
     showLoading(false);
-  }, []);
+  }, [formState.id]);
 
   return (
     <div style={{ height: 500, marginTop: "30px" }}>

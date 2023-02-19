@@ -164,11 +164,32 @@
       "id": 20
     },
     {
+      "id": 21,
+      "category": 1,
+      "description": "1PPPPPPP6",
+      "value": "1002.20",
+      "date": "2023-02-19T05:00:00.000Z"
+    },
+    {
       "category": 2,
-      "description": "1PPPPPPP",
-      "value": "1001",
-      "date": "2023-02-01T05:00:00.000Z",
-      "id": 21
+      "description": "aaa",
+      "value": "150",
+      "date": "2023-02-19T05:00:00.000Z",
+      "id": 22
+    },
+    {
+      "id": 23,
+      "category": 1,
+      "description": "bbb2",
+      "value": "200",
+      "date": "2023-02-20T05:00:00.000Z"
+    },
+    {
+      "id": 24,
+      "category": 2,
+      "description": "ccc1",
+      "value": "91100",
+      "date": "2023-02-19T05:00:00.000Z"
     }
   ],
   "expenses": [
