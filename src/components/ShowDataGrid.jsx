@@ -19,7 +19,9 @@ const ShowDataGrid = ({ url, formState }) => {
     formState.setSubmitText("EDIT");
   };
 
-  const onDeleteClick = (e, row) => {};
+  const onDeleteClick = (e, row) => {
+    alert("pop");
+  };
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
