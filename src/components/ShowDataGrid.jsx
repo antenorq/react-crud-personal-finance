@@ -4,11 +4,21 @@ import { Button } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 import useNotification from "../hooks/useNotification";
 
-const ShowDataGrid = ({ url, formState }) => {
+const ShowDataGrid = ({ url, formState, formType }) => {
   const [tableData, setTableData] = useState([]);
 
   //HOOK Notification
-  const { loading, showLoading } = useNotification();
+  const { loading, showLoading, setNotification } = useNotification();
+
+  useEffect(() => {
+    showLoading(true);
+
+    fetch(url)
+      .then((data) => data.json())
+      .then((data) => setTableData(data));
+
+    showLoading(false);
+  }, [formState.id]);
 
   const onEditClick = (e, row) => {
     formState.setId(row.id);
@@ -19,8 +29,28 @@ const ShowDataGrid = ({ url, formState }) => {
     formState.setSubmitText("EDIT");
   };
 
-  const onDeleteClick = (e, row) => {
-    alert("pop");
+  const onDeleteClick = async (e, row) => {
+    //START LOADING
+    showLoading(true);
+    try {
+      const res = await fetch(url + "/" + row.id, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        setNotification(
+          formType + " DELETED SUCCESSFULY:" + res.statusText,
+          "success"
+        );
+        formState.setId(null);
+      } else {
+        setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
+      }
+      //END LOADING
+      showLoading(false);
+    } catch (error) {
+      setNotification("SOMETHING WENT WRONG: " + error, "error");
+    }
   };
 
   const columns = [
@@ -62,16 +92,6 @@ const ShowDataGrid = ({ url, formState }) => {
     },
   ];
 
-  useEffect(() => {
-    showLoading(true);
-
-    fetch(url)
-      .then((data) => data.json())
-      .then((data) => setTableData(data));
-
-    showLoading(false);
-  }, [formState.id]);
-
   return (
     <div style={{ height: 500, marginTop: "30px" }}>
       <DataGrid
@@ -83,7 +103,9 @@ const ShowDataGrid = ({ url, formState }) => {
           toolbar: {
             showQuickFilter: true,
             quickFilterProps: { debounceMs: 500 },
-            color: "red",
+            sx: {
+              bgcolor: "#eee",
+            },
           },
         }}
         initialState={{

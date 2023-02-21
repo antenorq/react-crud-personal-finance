@@ -122,25 +122,11 @@
       "id": 14
     },
     {
-      "category": 2,
-      "description": "asas",
-      "value": "91100",
-      "date": "2023-02-15T05:00:00.000Z",
-      "id": 15
-    },
-    {
       "category": 1,
       "description": "Bike accessories ",
       "value": "1200",
       "date": "2023-02-09T05:00:00.000Z",
       "id": 16
-    },
-    {
-      "category": 1,
-      "description": "asas",
-      "value": "1200",
-      "date": "2023-02-17T05:00:00.000Z",
-      "id": 17
     },
     {
       "category": 1,
@@ -162,13 +148,6 @@
       "value": "1001",
       "date": "2023-02-01T05:00:00.000Z",
       "id": 20
-    },
-    {
-      "id": 21,
-      "category": 1,
-      "description": "1PPPPPPP6",
-      "value": "1002.20",
-      "date": "2023-02-19T05:00:00.000Z"
     },
     {
       "category": 2,

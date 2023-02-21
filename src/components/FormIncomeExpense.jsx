@@ -226,7 +226,7 @@ const FormIncomeExpense = ({ formType, url }) => {
       </Box>
 
       {/* MUI DATAGRID */}
-      <ShowDataGrid url={url} formState={formState} />
+      <ShowDataGrid url={url} formState={formState} formType={formType} />
     </>
   );
 };
