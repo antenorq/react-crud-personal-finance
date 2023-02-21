@@ -187,9 +187,16 @@
     {
       "id": 24,
       "category": 2,
-      "description": "ccc1",
+      "description": "ccc2",
       "value": "91100",
       "date": "2023-02-19T05:00:00.000Z"
+    },
+    {
+      "id": 25,
+      "category": 1,
+      "description": "salarioo",
+      "value": "3700",
+      "date": "2023-02-21T05:00:00.000Z"
     }
   ],
   "expenses": [
@@ -220,6 +227,13 @@
       "value": "2222.00",
       "date": "2023-02-02T05:00:00.000Z",
       "id": 4
+    },
+    {
+      "id": 5,
+      "category": 4,
+      "description": "seguro carroo",
+      "value": "256.20",
+      "date": "2023-02-21T05:00:00.000Z"
     }
   ],
   "categories": [

@@ -46,7 +46,7 @@ const FormIncomeExpense = ({ formType, url }) => {
   const { setNotification, showLoading } = useNotification();
 
   //HOOK LOADING CATEGORIES SELECT
-  const categories = useLoadCategories();
+  const categories = useLoadCategories(formType);
 
   //POST/EDIT INCOME OR EXPENSE
   const handleSubmit = async (e) => {

@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import useNotification from "../hooks/useNotification";
 
-const useLoadCategories = () => {
+const useLoadCategories = (formType) => {
   const [categories, setCategories] = useState([]);
-  const url_categories = "http://localhost:3000/categories";
+
+  if (formType === "income") {
+    var url_categories = "http://localhost:3000/categories?category_type=1";
+  }
+  if (formType === "expense") {
+    var url_categories = "http://localhost:3000/categories?category_type=2";
+  }
 
   //HOOK Notification
   const { setNotification, showLoading } = useNotification();
