@@ -52,6 +52,9 @@ const FormIncomeExpense = ({ formType, url }) => {
   const handleSubmit = async (e) => {
     //START LOADING
     showLoading(true);
+    //setId activate useEffect to reload the Grid
+    setId(null);
+
     e.preventDefault();
 
     //IF HAVE ID EDIT - UPDATE - METHOD PUT
@@ -67,14 +70,14 @@ const FormIncomeExpense = ({ formType, url }) => {
         });
 
         if (res.ok) {
+          //const newdata = await res.json();
+          //setId activate useEffect to reload the Grid
+          //setId(null);
+          console.log("edit: " + id);
           setNotification(
             formType + " UPDATED SUCCESSFULY:" + res.statusText,
             "success"
           );
-          const newdata = await res.json();
-          //reset setId activate useEffect to reload the Grid
-          setId(newdata.id);
-          console.log("edit: " + id);
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
         }
@@ -97,14 +100,14 @@ const FormIncomeExpense = ({ formType, url }) => {
         });
 
         if (res.ok) {
-          const newdata = await res.json();
+          //const newdata = await res.json();
+          //setId activate useEffect to reload the Grid
+          //setId(newdata.id);
+          console.log("post: " + id);
           setNotification(
             formType + " REGISTERED SUCCESSFULY:" + res.statusText,
             "success"
           );
-          //setId activate useEffect to reload the Grid
-          setId(null);
-          console.log("post: " + id);
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
         }

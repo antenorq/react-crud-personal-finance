@@ -21,7 +21,7 @@ const ShowDataGrid = ({ url, formState, formType, categories }) => {
     showLoading(false);
   }, [formState.id]);
 
-  console.log("formState.id: " + formState.id);
+  console.log("formState id: " + formState.id);
 
   const onEditClick = (e, row) => {
     formState.setId(row.id);
