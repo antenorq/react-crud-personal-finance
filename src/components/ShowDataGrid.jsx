@@ -4,9 +4,10 @@ import { Button } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 import useNotification from "../hooks/useNotification";
 
-const ShowDataGrid = ({ url, formState, formType }) => {
+const ShowDataGrid = ({ url, formState, formType, categories }) => {
   const [tableData, setTableData] = useState([]);
 
+  /*console.log(categories);*/
   //HOOK Notification
   const { loading, showLoading, setNotification } = useNotification();
 
@@ -19,6 +20,8 @@ const ShowDataGrid = ({ url, formState, formType }) => {
 
     showLoading(false);
   }, [formState.id]);
+
+  console.log("formState.id: " + formState.id);
 
   const onEditClick = (e, row) => {
     formState.setId(row.id);
@@ -42,7 +45,8 @@ const ShowDataGrid = ({ url, formState, formType }) => {
           formType + " DELETED SUCCESSFULY:" + res.statusText,
           "success"
         );
-        formState.setId(null);
+        //setId activate useEffect to reload the Grid
+        formState.setId(row.id);
       } else {
         setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
       }
@@ -55,7 +59,17 @@ const ShowDataGrid = ({ url, formState, formType }) => {
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "category", headerName: "Category", flex: 1 },
+    {
+      field: "category",
+      headerName: "Category",
+      flex: 1,
+      renderCell: (params) => {
+        var result = categories.find(
+          (categorie) => categorie.id == params.row.category
+        );
+        if (result) return result.description;
+      },
+    },
     { field: "description", headerName: "Description", flex: 1 },
     { field: "value", headerName: "Value", flex: 0.5 },
     { field: "date", headerName: "Date", flex: 1 },

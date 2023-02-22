@@ -71,7 +71,10 @@ const FormIncomeExpense = ({ formType, url }) => {
             formType + " UPDATED SUCCESSFULY:" + res.statusText,
             "success"
           );
-          setId(null);
+          const newdata = await res.json();
+          //reset setId activate useEffect to reload the Grid
+          setId(newdata.id);
+          console.log("edit: " + id);
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
         }
@@ -94,10 +97,14 @@ const FormIncomeExpense = ({ formType, url }) => {
         });
 
         if (res.ok) {
+          const newdata = await res.json();
           setNotification(
             formType + " REGISTERED SUCCESSFULY:" + res.statusText,
             "success"
           );
+          //setId activate useEffect to reload the Grid
+          setId(null);
+          console.log("post: " + id);
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
         }
@@ -226,7 +233,12 @@ const FormIncomeExpense = ({ formType, url }) => {
       </Box>
 
       {/* MUI DATAGRID */}
-      <ShowDataGrid url={url} formState={formState} formType={formType} />
+      <ShowDataGrid
+        url={url}
+        formState={formState}
+        formType={formType}
+        categories={categories}
+      />
     </>
   );
 };
