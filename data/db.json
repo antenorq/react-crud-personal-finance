@@ -389,6 +389,41 @@
       "id": 4,
       "category_type": 2,
       "description": "Car Insurance"
+    },
+    {
+      "category_type": 1,
+      "description": "aaaa",
+      "id": 5
+    },
+    {
+      "category_type": 2,
+      "description": "bbb",
+      "id": 6
+    },
+    {
+      "category_type": 1,
+      "description": "aaa1",
+      "id": 7
+    },
+    {
+      "category_type": 2,
+      "description": "aaa3",
+      "id": 8
+    },
+    {
+      "category_type": 1,
+      "description": "aaa4",
+      "id": 9
+    },
+    {
+      "category_type": 1,
+      "description": "aaa6",
+      "id": 10
+    },
+    {
+      "category_type": 2,
+      "description": "expense1",
+      "id": 11
     }
   ]
 }

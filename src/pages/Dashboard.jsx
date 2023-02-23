@@ -4,7 +4,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import CancelIcon from "@mui/icons-material/Cancel";
-import ListAltIcon from "@mui/icons-material/ListAlt";
+import PostAddIcon from "@mui/icons-material/PostAdd";
 import KeyIcon from "@mui/icons-material/Key";
 import { NavLink } from "react-router-dom";
 
@@ -48,10 +48,12 @@ const Dashboard = () => {
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>
-        <Paper className={style.paper} elevation={2} sx={paperstyle}>
-          <ListAltIcon color="primary" sx={iconsize} />
-          <Typography variant="h6">CATEGORY</Typography>
-        </Paper>
+        <NavLink to="/category">
+          <Paper className={style.paper} elevation={2} sx={paperstyle}>
+            <PostAddIcon color="primary" sx={iconsize} />
+            <Typography variant="h6">CATEGORY</Typography>
+          </Paper>
+        </NavLink>
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>

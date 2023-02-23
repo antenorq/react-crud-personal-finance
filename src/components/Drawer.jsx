@@ -7,8 +7,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import PostAddIcon from "@mui/icons-material/PostAdd";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import CancelIcon from "@mui/icons-material/Cancel";
 import { NavLink } from "react-router-dom";
 import Home from "@mui/icons-material/Home";
 import AddCircle from "@mui/icons-material/AddCircle";
@@ -34,7 +35,7 @@ export default function TemporaryDrawer({ openDrawer, handleDrawerClose }) {
           </ListItem>
         </NavLink>
 
-        <NavLink to="/">
+        <NavLink to="/income">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -45,7 +46,7 @@ export default function TemporaryDrawer({ openDrawer, handleDrawerClose }) {
           </ListItem>
         </NavLink>
 
-        <NavLink to="/">
+        <NavLink to="/expense">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -55,29 +56,28 @@ export default function TemporaryDrawer({ openDrawer, handleDrawerClose }) {
             </ListItemButton>
           </ListItem>
         </NavLink>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+
+        <NavLink to="/category">
+          <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <MailIcon />
+                <PostAddIcon color="info" />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary="CATEGORY" />
             </ListItemButton>
           </ListItem>
-        ))}
+        </NavLink>
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <CancelIcon />
+            </ListItemIcon>
+            <ListItemText primary="EXIT" />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );

@@ -160,7 +160,7 @@ const FormIncomeExpense = ({ formType, url }) => {
               </TextField>
             </Grid>
 
-            <Grid item xs={12} sm={12} md={6} lg={3}>
+            <Grid item xs={12} md={6} lg={3}>
               <TextField
                 name="description"
                 label="Description"
@@ -173,7 +173,7 @@ const FormIncomeExpense = ({ formType, url }) => {
               />
             </Grid>
 
-            <Grid item xs={12} sm={12} md={6} lg={2}>
+            <Grid item xs={12} md={6} lg={2}>
               <NumericFormat
                 customInput={TextField}
                 name="value"
@@ -194,7 +194,7 @@ const FormIncomeExpense = ({ formType, url }) => {
               />
             </Grid>
 
-            <Grid item xs={12} sm={12} md={6} lg={2}>
+            <Grid item xs={12} md={6} lg={2}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <MobileDatePicker
                   value={date}
@@ -215,7 +215,7 @@ const FormIncomeExpense = ({ formType, url }) => {
               </LocalizationProvider>
             </Grid>
 
-            <Grid item xs={12} sm={12} md={12} lg={2}>
+            <Grid item xs={12} md={12} lg={2}>
               <Button
                 type="submit"
                 variant="contained"

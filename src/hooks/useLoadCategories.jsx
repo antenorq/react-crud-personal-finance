@@ -11,6 +11,10 @@ const useLoadCategories = (formType) => {
     var url_categories = "http://localhost:3000/categories?category_type=2";
   }
 
+  if (formType === null) {
+    var url_categories = "http://localhost:3000/categories";
+  }
+
   //HOOK Notification
   const { setNotification, showLoading } = useNotification();
 
