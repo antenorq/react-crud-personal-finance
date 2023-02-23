@@ -4,12 +4,24 @@ import { Button } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 import useNotification from "../hooks/useNotification";
 
-const ShowDataGrid = ({ url, formState }) => {
+const ShowDataGrid = ({ url, formState, formType, categories }) => {
   const [tableData, setTableData] = useState([]);
 
   /*console.log(categories);*/
   //HOOK Notification
-  const { loading, showLoading } = useNotification();
+  const { loading, showLoading, setNotification } = useNotification();
+
+  useEffect(() => {
+    showLoading(true);
+
+    fetch(url)
+      .then((data) => data.json())
+      .then((data) => setTableData(data));
+
+    showLoading(false);
+  }, [formState.id]);
+
+  console.log("formState id: " + formState.id);
 
   const onEditClick = (e, row) => {
     formState.setId(row.id);
@@ -20,7 +32,30 @@ const ShowDataGrid = ({ url, formState }) => {
     formState.setSubmitText("EDIT");
   };
 
-  const onDeleteClick = (e, row) => {};
+  const onDeleteClick = async (e, row) => {
+    //START LOADING
+    showLoading(true);
+    try {
+      const res = await fetch(url + "/" + row.id, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        setNotification(
+          formType + " DELETED SUCCESSFULY:" + res.statusText,
+          "success"
+        );
+        //setId activate useEffect to reload the Grid
+        formState.setId(row.id);
+      } else {
+        setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
+      }
+      //END LOADING
+      showLoading(false);
+    } catch (error) {
+      setNotification("SOMETHING WENT WRONG: " + error, "error");
+    }
+  };
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
