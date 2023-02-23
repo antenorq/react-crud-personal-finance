@@ -59,7 +59,7 @@ export default function SignInSide() {
         showLoading(false);
       })
       .catch((error) => {
-        console.log("error.message: " + error.message);
+        setNotification("SOMETHING WENT WRONG: " + error, "error");
       });
   };
 

@@ -7,7 +7,6 @@ import useNotification from "../hooks/useNotification";
 const ShowDataGrid = ({ url, formState, formType, categories }) => {
   const [tableData, setTableData] = useState([]);
 
-  /*console.log(categories);*/
   //HOOK Notification
   const { loading, showLoading, setNotification } = useNotification();
 
@@ -19,7 +18,7 @@ const ShowDataGrid = ({ url, formState, formType, categories }) => {
       .then((data) => setTableData(data));
 
     showLoading(false);
-  }, [formState.id]);
+  }, [loading]);
 
   console.log("formState id: " + formState.id);
 
@@ -46,7 +45,7 @@ const ShowDataGrid = ({ url, formState, formType, categories }) => {
           "success"
         );
         //setId activate useEffect to reload the Grid
-        formState.setId(row.id);
+        formState.setId("");
       } else {
         setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
       }
@@ -65,7 +64,7 @@ const ShowDataGrid = ({ url, formState, formType, categories }) => {
       flex: 1,
       renderCell: (params) => {
         var result = categories.find(
-          (categorie) => categorie.id == params.row.category
+          (categorie) => categorie.id === params.row.category
         );
         if (result) return result.description;
       },

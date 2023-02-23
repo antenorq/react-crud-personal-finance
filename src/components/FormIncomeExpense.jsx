@@ -53,7 +53,7 @@ const FormIncomeExpense = ({ formType, url }) => {
     //START LOADING
     showLoading(true);
     //setId activate useEffect to reload the Grid
-    setId(null);
+    //setId(null);
 
     e.preventDefault();
 
@@ -74,6 +74,7 @@ const FormIncomeExpense = ({ formType, url }) => {
           //setId activate useEffect to reload the Grid
           //setId(null);
           console.log("edit: " + id);
+
           setNotification(
             formType + " UPDATED SUCCESSFULY: " + res.statusText,
             "success"
@@ -102,8 +103,9 @@ const FormIncomeExpense = ({ formType, url }) => {
         if (res.ok) {
           //const newdata = await res.json();
           //setId activate useEffect to reload the Grid
-          //setId(newdata.id);
+          //setId("");
           console.log("post: " + id);
+
           setNotification(
             formType + " REGISTERED SUCCESSFULY:" + res.statusText,
             "success"
@@ -117,8 +119,8 @@ const FormIncomeExpense = ({ formType, url }) => {
         setNotification("SOMETHING WENT WRONG: " + error, "error");
       }
     }
-    //clear states and inputs after submit
-    setId("");
+    //clear states and inputs after submit or edit
+    setId(null);
     setCategory("");
     setDescription("");
     setValue("");

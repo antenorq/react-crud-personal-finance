@@ -276,132 +276,6 @@
       "id": 56
     },
     {
-      "category": 1,
-      "description": "555",
-      "value": "555",
-      "date": "2023-02-23T05:00:00.000Z",
-      "id": 57
-    },
-    {
-      "category": 1,
-      "description": "666",
-      "value": "666",
-      "date": "2023-02-23T05:00:00.000Z",
-      "id": 58
-    },
-    {
-      "category": 1,
-      "description": "777",
-      "value": "1200",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 59
-    },
-    {
-      "id": 60,
-      "category": 1,
-      "description": "8888",
-      "value": "8888",
-      "date": "2023-02-22T05:00:00.000Z"
-    },
-    {
-      "category": 1,
-      "description": "999",
-      "value": "1200",
-      "date": "2023-02-23T05:00:00.000Z",
-      "id": 61
-    },
-    {
-      "id": 62,
-      "category": 1,
-      "description": "qwwwqwq",
-      "value": "3333",
-      "date": "2023-02-22T05:00:00.000Z"
-    },
-    {
-      "category": 1,
-      "description": "11",
-      "value": "11",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 63
-    },
-    {
-      "category": 1,
-      "description": "22",
-      "value": "22",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 64
-    },
-    {
-      "category": 1,
-      "description": "111",
-      "value": "111",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 65
-    },
-    {
-      "category": 1,
-      "description": "3",
-      "value": "3",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 66
-    },
-    {
-      "category": 1,
-      "description": "4",
-      "value": "4",
-      "date": "2023-02-24T05:00:00.000Z",
-      "id": 67
-    },
-    {
-      "category": 1,
-      "description": "5",
-      "value": "5",
-      "date": "2023-02-23T05:00:00.000Z",
-      "id": 68
-    },
-    {
-      "category": 1,
-      "description": "6",
-      "value": "6",
-      "date": "2023-02-23T05:00:00.000Z",
-      "id": 69
-    },
-    {
-      "category": 1,
-      "description": "7",
-      "value": "7",
-      "date": "2023-02-23T05:00:00.000Z",
-      "id": 70
-    },
-    {
-      "category": 1,
-      "description": "9",
-      "value": "9",
-      "date": "2023-02-23T05:00:00.000Z",
-      "id": 71
-    },
-    {
-      "id": 72,
-      "category": 1,
-      "description": "101",
-      "value": "101",
-      "date": "2023-02-23T05:00:00.000Z"
-    },
-    {
-      "id": 73,
-      "category": 1,
-      "description": "112",
-      "value": "112",
-      "date": "2023-02-24T05:00:00.000Z"
-    },
-    {
-      "id": 74,
-      "category": 1,
-      "description": "111",
-      "value": "1111",
-      "date": "2023-02-22T05:00:00.000Z"
-    },
-    {
       "category": 2,
       "description": "aaa",
       "value": "150",
@@ -409,18 +283,81 @@
       "id": 22
     },
     {
-      "category": 1,
-      "description": "111",
-      "value": "111",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 77
-    },
-    {
       "id": 24,
       "category": 2,
       "description": "ccc1",
       "value": "91100",
       "date": "2023-02-19T05:00:00.000Z"
+    },
+    {
+      "category": 1,
+      "description": "1",
+      "value": "1",
+      "date": "2023-02-23T05:00:00.000Z",
+      "id": 57
+    },
+    {
+      "category": 1,
+      "description": "2",
+      "value": "2",
+      "date": "2023-02-24T05:00:00.000Z",
+      "id": 58
+    },
+    {
+      "category": 1,
+      "description": "3",
+      "value": "3",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 59
+    },
+    {
+      "id": 60,
+      "category": 1,
+      "description": "5",
+      "value": "5",
+      "date": "2023-02-24T05:00:00.000Z"
+    },
+    {
+      "id": 61,
+      "category": 1,
+      "description": "6",
+      "value": "6",
+      "date": "2023-02-23T05:00:00.000Z"
+    },
+    {
+      "id": 62,
+      "category": 1,
+      "description": "8",
+      "value": "8",
+      "date": "2023-02-24T05:00:00.000Z"
+    },
+    {
+      "id": 63,
+      "category": 1,
+      "description": "10",
+      "value": "1001",
+      "date": "2023-02-16T05:00:00.000Z"
+    },
+    {
+      "id": 64,
+      "category": 1,
+      "description": "1123",
+      "value": "1001",
+      "date": "2023-02-23T05:00:00.000Z"
+    },
+    {
+      "category": 1,
+      "description": "65",
+      "value": "65",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 65
+    },
+    {
+      "category": 1,
+      "description": "66",
+      "value": "66",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 66
     }
   ],
   "expenses": [
