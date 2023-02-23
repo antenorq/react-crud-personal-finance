@@ -4,23 +4,24 @@ import { Button } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 import useNotification from "../hooks/useNotification";
 
-const ShowDataGrid = ({ url, formState, formType, categories }) => {
+const ShowDataGrid = ({
+  url,
+  formState,
+  formType,
+  categories,
+  loadGrid,
+  setLoadGrid,
+}) => {
   const [tableData, setTableData] = useState([]);
 
   //HOOK Notification
   const { loading, showLoading, setNotification } = useNotification();
 
   useEffect(() => {
-    showLoading(true);
-
     fetch(url)
       .then((data) => data.json())
       .then((data) => setTableData(data));
-
-    showLoading(false);
-  }, [loading]);
-
-  console.log("formState id: " + formState.id);
+  }, [loadGrid, url]);
 
   const onEditClick = (e, row) => {
     formState.setId(row.id);
@@ -44,8 +45,8 @@ const ShowDataGrid = ({ url, formState, formType, categories }) => {
           formType + " DELETED SUCCESSFULY:" + res.statusText,
           "success"
         );
-        //setId activate useEffect to reload the Grid
-        formState.setId("");
+        //setLoadGrid activate useEffect to reload the Grid
+        loadGrid ? setLoadGrid(false) : setLoadGrid(true);
       } else {
         setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
       }

@@ -26,6 +26,7 @@ const FormIncomeExpense = ({ formType, url }) => {
   const [date, setDate] = useState(null);
 
   const [submitText, setSubmitText] = useState("SUBMIT");
+  const [loadGrid, setLoadGrid] = useState(false);
 
   const formState = {
     id,
@@ -52,8 +53,6 @@ const FormIncomeExpense = ({ formType, url }) => {
   const handleSubmit = async (e) => {
     //START LOADING
     showLoading(true);
-    //setId activate useEffect to reload the Grid
-    //setId(null);
 
     e.preventDefault();
 
@@ -70,11 +69,6 @@ const FormIncomeExpense = ({ formType, url }) => {
         });
 
         if (res.ok) {
-          //const newdata = await res.json();
-          //setId activate useEffect to reload the Grid
-          //setId(null);
-          console.log("edit: " + id);
-
           setNotification(
             formType + " UPDATED SUCCESSFULY: " + res.statusText,
             "success"
@@ -101,11 +95,6 @@ const FormIncomeExpense = ({ formType, url }) => {
         });
 
         if (res.ok) {
-          //const newdata = await res.json();
-          //setId activate useEffect to reload the Grid
-          //setId("");
-          console.log("post: " + id);
-
           setNotification(
             formType + " REGISTERED SUCCESSFULY:" + res.statusText,
             "success"
@@ -126,6 +115,9 @@ const FormIncomeExpense = ({ formType, url }) => {
     setValue("");
     setDate(null);
     setSubmitText("SUBMIT");
+
+    //setLoadGrid activate useEffect to reload the Grid
+    loadGrid ? setLoadGrid(false) : setLoadGrid(true);
   };
 
   return (
@@ -243,6 +235,8 @@ const FormIncomeExpense = ({ formType, url }) => {
         formState={formState}
         formType={formType}
         categories={categories}
+        loadGrid={loadGrid}
+        setLoadGrid={setLoadGrid}
       />
     </>
   );

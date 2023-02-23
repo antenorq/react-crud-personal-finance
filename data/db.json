@@ -313,51 +313,23 @@
     {
       "id": 60,
       "category": 1,
-      "description": "5",
+      "description": "60",
       "value": "5",
       "date": "2023-02-24T05:00:00.000Z"
     },
     {
-      "id": 61,
       "category": 1,
-      "description": "6",
-      "value": "6",
-      "date": "2023-02-23T05:00:00.000Z"
+      "description": "62",
+      "value": "62",
+      "date": "2023-02-23T05:00:00.000Z",
+      "id": 62
     },
     {
-      "id": 62,
-      "category": 1,
-      "description": "8",
-      "value": "8",
-      "date": "2023-02-24T05:00:00.000Z"
-    },
-    {
-      "id": 63,
-      "category": 1,
-      "description": "10",
-      "value": "1001",
-      "date": "2023-02-16T05:00:00.000Z"
-    },
-    {
-      "id": 64,
-      "category": 1,
-      "description": "1123",
-      "value": "1001",
-      "date": "2023-02-23T05:00:00.000Z"
-    },
-    {
-      "category": 1,
-      "description": "65",
-      "value": "65",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 65
-    },
-    {
-      "category": 1,
-      "description": "66",
-      "value": "66",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 66
+      "category": 2,
+      "description": "63",
+      "value": "63",
+      "date": "2023-02-24T05:00:00.000Z",
+      "id": 63
     }
   ],
   "expenses": [
