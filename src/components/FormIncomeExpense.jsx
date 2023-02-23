@@ -46,12 +46,15 @@ const FormIncomeExpense = ({ formType, url }) => {
   const { setNotification, showLoading } = useNotification();
 
   //HOOK LOADING CATEGORIES SELECT
-  const categories = useLoadCategories();
+  const categories = useLoadCategories(formType);
 
   //POST/EDIT INCOME OR EXPENSE
   const handleSubmit = async (e) => {
     //START LOADING
     showLoading(true);
+    //setId activate useEffect to reload the Grid
+    setId(null);
+
     e.preventDefault();
 
     //IF HAVE ID EDIT - UPDATE - METHOD PUT
@@ -67,11 +70,14 @@ const FormIncomeExpense = ({ formType, url }) => {
         });
 
         if (res.ok) {
+          //const newdata = await res.json();
+          //setId activate useEffect to reload the Grid
+          //setId(null);
+          console.log("edit: " + id);
           setNotification(
             formType + " UPDATED SUCCESSFULY: " + res.statusText,
             "success"
           );
-          setId(null);
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
         }
@@ -94,6 +100,10 @@ const FormIncomeExpense = ({ formType, url }) => {
         });
 
         if (res.ok) {
+          //const newdata = await res.json();
+          //setId activate useEffect to reload the Grid
+          //setId(newdata.id);
+          console.log("post: " + id);
           setNotification(
             formType + " REGISTERED SUCCESSFULY:" + res.statusText,
             "success"
@@ -226,7 +236,7 @@ const FormIncomeExpense = ({ formType, url }) => {
       </Box>
 
       {/* MUI DATAGRID */}
-      <ShowDataGrid url={url} formState={formState} formType={formType} />
+      <ShowDataGrid url={url} formState={formState} />
     </>
   );
 };

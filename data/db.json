@@ -38,20 +38,6 @@
       "date": "15/02/2023"
     },
     {
-      "category": 1,
-      "description": "Igloo January",
-      "value": "911",
-      "date": "20/01/2023",
-      "id": 3
-    },
-    {
-      "category": 2,
-      "description": "Website done",
-      "value": "1200",
-      "date": "02/02/2023",
-      "id": 4
-    },
-    {
       "category": 2,
       "description": "asas",
       "value": "1,200",
@@ -59,107 +45,380 @@
       "id": 5
     },
     {
+      "id": 20,
       "category": 1,
-      "description": "qweqwe",
-      "value": "5,655",
+      "description": "1PPPPPPP2",
+      "value": "1002",
+      "date": "2023-02-01T05:00:00.000Z"
+    },
+    {
+      "id": 25,
+      "category": 1,
+      "description": "salarioo",
+      "value": "3700",
+      "date": "2023-02-21T05:00:00.000Z"
+    },
+    {
+      "id": 26,
+      "category": 1,
+      "description": "salariooo",
+      "value": "3700",
+      "date": "2023-02-21T05:00:00.000Z"
+    },
+    {
+      "category": 2,
+      "description": "zs",
+      "value": "8778.20",
+      "date": "2023-02-08T05:00:00.000Z",
+      "id": 7
+    },
+    {
+      "category": 1,
+      "description": "asas",
+      "value": "1111",
+      "date": "2023-02-01T05:00:00.000Z",
+      "id": 8
+    },
+    {
+      "category": 1,
+      "description": "aaaaaaaa",
+      "value": "1111.00",
+      "date": "2023-02-01T05:00:00.000Z",
+      "id": 9
+    },
+    {
+      "category": 1,
+      "description": "sasdasdasd",
+      "value": "1200",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 30
+    },
+    {
+      "category": 1,
+      "description": "qqqqqqqqqq",
+      "value": "1200",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 31
+    },
+    {
+      "category": 1,
+      "description": "Bike accessories ",
+      "value": "555",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 32
+    },
+    {
+      "category": 1,
+      "description": "23232",
+      "value": "91100",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 33
+    },
+    {
+      "category": 1,
+      "description": "222",
+      "value": "91100",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 34
+    },
+    {
+      "category": 1,
+      "description": "xxxx",
+      "value": "1200",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 35
+    },
+    {
+      "category": 1,
+      "description": "2222",
+      "value": "91100",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 36
+    },
+    {
+      "category": 1,
+      "description": "vvvv",
+      "value": "1200",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 37
+    },
+    {
+      "category": 1,
+      "description": "asas",
+      "value": "74747",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 38
+    },
+    {
+      "category": 1,
+      "description": "Bike accessories ",
+      "value": "4444",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 39
+    },
+    {
+      "category": 1,
+      "description": "ffffff",
+      "value": "1200",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 40
+    },
+    {
+      "category": 1,
+      "description": "bbbbbb",
+      "value": "1200",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 41
+    },
+    {
+      "category": 1,
+      "description": "asas",
+      "value": "1200",
+      "date": "2023-02-23T05:00:00.000Z",
+      "id": 42
+    },
+    {
+      "category": 1,
+      "description": "nnnnnn",
+      "value": "1200",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 43
+    },
+    {
+      "category": 1,
+      "description": "mmmmm",
+      "value": "1111",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 44
+    },
+    {
+      "category": 1,
+      "description": "zzzzz",
+      "value": "1200",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 45
+    },
+    {
+      "category": 1,
+      "description": "abababa",
+      "value": "1111",
+      "date": "2023-02-23T05:00:00.000Z",
+      "id": 46
+    },
+    {
+      "category": 1,
+      "description": "zxzxz",
+      "value": "1200",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 47
+    },
+    {
+      "category": 1,
+      "description": "asd2",
+      "value": "1111",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 48
+    },
+    {
+      "category": 1,
+      "description": "qwqw",
+      "value": "1200",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 49
+    },
+    {
+      "category": 1,
+      "description": "asas",
+      "value": "1200",
+      "date": "2023-02-23T05:00:00.000Z",
+      "id": 50
+    },
+    {
+      "category": 1,
+      "description": "Bike accessories ",
+      "value": "1200",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 51
+    },
+    {
+      "category": 1,
+      "description": "asas",
+      "value": "91100",
+      "date": "2023-02-15T05:00:00.000Z",
+      "id": 52
+    },
+    {
+      "category": 1,
+      "description": "111",
+      "value": "1111",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 53
+    },
+    {
+      "category": 1,
+      "description": "222",
+      "value": "1200",
       "date": "2023-02-10T05:00:00.000Z",
-      "id": 6
+      "id": 54
     },
     {
       "category": 1,
-      "description": "OQAIPOQWIEQWE",
-      "value": "3600.00",
-      "date": "2023-02-15T05:00:00.000Z",
-      "id": 10
-    },
-    {
-      "category": 4,
-      "description": "car",
-      "value": "250",
-      "date": "2023-02-15T05:00:00.000Z",
-      "id": 11
-    },
-    {
-      "category": 2,
-      "description": "Bike accessories ",
-      "value": "91100",
-      "date": "2023-02-16T05:00:00.000Z",
-      "id": 12
-    },
-    {
-      "category": 4,
-      "description": "carro",
-      "value": "4000",
-      "date": "2023-02-04T05:00:00.000Z",
-      "id": 13
-    },
-    {
-      "category": 2,
-      "description": "PPPPPPP",
-      "value": "1001",
-      "date": "2023-02-01T05:00:00.000Z",
-      "id": 14
-    },
-    {
-      "category": 2,
-      "description": "asas",
-      "value": "91100",
-      "date": "2023-02-15T05:00:00.000Z",
-      "id": 15
+      "description": "333",
+      "value": "333",
+      "date": "2023-02-23T05:00:00.000Z",
+      "id": 55
     },
     {
       "category": 1,
-      "description": "Bike accessories ",
+      "description": "444",
+      "value": "444",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 56
+    },
+    {
+      "category": 1,
+      "description": "555",
+      "value": "555",
+      "date": "2023-02-23T05:00:00.000Z",
+      "id": 57
+    },
+    {
+      "category": 1,
+      "description": "666",
+      "value": "666",
+      "date": "2023-02-23T05:00:00.000Z",
+      "id": 58
+    },
+    {
+      "category": 1,
+      "description": "777",
       "value": "1200",
-      "date": "2023-02-09T05:00:00.000Z",
-      "id": 16
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 59
+    },
+    {
+      "id": 60,
+      "category": 1,
+      "description": "8888",
+      "value": "8888",
+      "date": "2023-02-22T05:00:00.000Z"
     },
     {
       "category": 1,
-      "description": "asas",
+      "description": "999",
       "value": "1200",
-      "date": "2023-02-17T05:00:00.000Z",
-      "id": 17
+      "date": "2023-02-23T05:00:00.000Z",
+      "id": 61
+    },
+    {
+      "id": 62,
+      "category": 1,
+      "description": "qwwwqwq",
+      "value": "3333",
+      "date": "2023-02-22T05:00:00.000Z"
     },
     {
       "category": 1,
-      "description": "Bike accessories ",
-      "value": "1200",
-      "date": "2023-02-09T05:00:00.000Z",
-      "id": 18
+      "description": "11",
+      "value": "11",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 63
+    },
+    {
+      "category": 1,
+      "description": "22",
+      "value": "22",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 64
+    },
+    {
+      "category": 1,
+      "description": "111",
+      "value": "111",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 65
+    },
+    {
+      "category": 1,
+      "description": "3",
+      "value": "3",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 66
+    },
+    {
+      "category": 1,
+      "description": "4",
+      "value": "4",
+      "date": "2023-02-24T05:00:00.000Z",
+      "id": 67
+    },
+    {
+      "category": 1,
+      "description": "5",
+      "value": "5",
+      "date": "2023-02-23T05:00:00.000Z",
+      "id": 68
+    },
+    {
+      "category": 1,
+      "description": "6",
+      "value": "6",
+      "date": "2023-02-23T05:00:00.000Z",
+      "id": 69
+    },
+    {
+      "category": 1,
+      "description": "7",
+      "value": "7",
+      "date": "2023-02-23T05:00:00.000Z",
+      "id": 70
+    },
+    {
+      "category": 1,
+      "description": "9",
+      "value": "9",
+      "date": "2023-02-23T05:00:00.000Z",
+      "id": 71
+    },
+    {
+      "id": 72,
+      "category": 1,
+      "description": "101",
+      "value": "101",
+      "date": "2023-02-23T05:00:00.000Z"
+    },
+    {
+      "id": 73,
+      "category": 1,
+      "description": "112",
+      "value": "112",
+      "date": "2023-02-24T05:00:00.000Z"
+    },
+    {
+      "id": 74,
+      "category": 1,
+      "description": "111",
+      "value": "1111",
+      "date": "2023-02-22T05:00:00.000Z"
     },
     {
       "category": 2,
-      "description": "1PPPPPPP",
-      "value": "1001",
-      "date": "2023-02-01T05:00:00.000Z",
-      "id": 19
+      "description": "aaa",
+      "value": "150",
+      "date": "2023-02-19T05:00:00.000Z",
+      "id": 22
     },
     {
-      "category": 2,
-      "description": "1PPPPPPP",
-      "value": "1001",
-      "date": "2023-02-01T05:00:00.000Z",
-      "id": 20
-    },
-    {
-      "id": 21,
       "category": 1,
-      "description": "1PPPPPPP6",
-      "value": "1002.20",
-      "date": "2023-02-19T05:00:00.000Z"
-    },
-    {
-      "id": 23,
-      "category": 1,
-      "description": "bbb2",
-      "value": "200",
-      "date": "2023-02-20T05:00:00.000Z"
+      "description": "111",
+      "value": "111",
+      "date": "2023-02-22T05:00:00.000Z",
+      "id": 77
     },
     {
       "id": 24,
       "category": 2,
-      "description": "ccc2",
+      "description": "ccc1",
       "value": "91100",
       "date": "2023-02-19T05:00:00.000Z"
     }
@@ -167,17 +426,17 @@
   "expenses": [
     {
       "id": 1,
-      "category": 2,
+      "category": 3,
       "description": "rent 1",
       "value": "2100",
-      "date": "22/02/1984"
+      "date": "2023-02-22T05:00:00.000Z"
     },
     {
       "id": 2,
-      "category": 2,
+      "category": 3,
       "description": "rent 2",
       "value": "2100",
-      "date": "15/02/2023"
+      "date": "2023-02-22T05:00:00.000Z"
     },
     {
       "category": 4,
@@ -192,6 +451,13 @@
       "value": "2222.00",
       "date": "2023-02-02T05:00:00.000Z",
       "id": 4
+    },
+    {
+      "id": 5,
+      "category": 4,
+      "description": "seguro carroo",
+      "value": "256.20",
+      "date": "2023-02-21T05:00:00.000Z"
     }
   ],
   "categories": [

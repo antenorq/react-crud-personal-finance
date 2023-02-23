@@ -1,19 +1,15 @@
 import { useState, useEffect } from "react";
-import {
-  DataGrid,
-  GridRowsProp,
-  GridColDef,
-  GridToolbar,
-} from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 import useNotification from "../hooks/useNotification";
 
-const ShowDataGrid = ({ url, formState, formType }) => {
+const ShowDataGrid = ({ url, formState }) => {
   const [tableData, setTableData] = useState([]);
 
+  /*console.log(categories);*/
   //HOOK Notification
-  const { setNotification, loading, showLoading } = useNotification();
+  const { loading, showLoading } = useNotification();
 
   const onEditClick = (e, row) => {
     formState.setId(row.id);
@@ -24,33 +20,21 @@ const ShowDataGrid = ({ url, formState, formType }) => {
     formState.setSubmitText("EDIT");
   };
 
-  const onDeleteClick = async (e, row) => {
-    //START LOADING
-    showLoading(true);
-    try {
-      const res = await fetch(url + "/" + row.id, {
-        method: "DELETE",
-      });
-
-      if (res.ok) {
-        setNotification(
-          formType + " DELETE SUCCESSFULY: " + res.statusText,
-          "success"
-        );
-        formState.setId(row.id);
-      } else {
-        setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
-      }
-      //END LOADING
-      showLoading(false);
-    } catch (error) {
-      setNotification("SOMETHING WENT WRONG: " + error, "error");
-    }
-  };
+  const onDeleteClick = (e, row) => {};
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "category", headerName: "Category", flex: 1 },
+    {
+      field: "category",
+      headerName: "Category",
+      flex: 1,
+      renderCell: (params) => {
+        var result = categories.find(
+          (categorie) => categorie.id == params.row.category
+        );
+        if (result) return result.description;
+      },
+    },
     { field: "description", headerName: "Description", flex: 1 },
     { field: "value", headerName: "Value", flex: 0.5 },
     { field: "date", headerName: "Date", flex: 1 },
@@ -87,16 +71,6 @@ const ShowDataGrid = ({ url, formState, formType }) => {
     },
   ];
 
-  useEffect(() => {
-    showLoading(true);
-
-    fetch(url)
-      .then((data) => data.json())
-      .then((data) => setTableData(data));
-
-    showLoading(false);
-  }, [formState.id]);
-
   return (
     <div style={{ height: 500, marginTop: "30px" }}>
       <DataGrid
@@ -108,7 +82,9 @@ const ShowDataGrid = ({ url, formState, formType }) => {
           toolbar: {
             showQuickFilter: true,
             quickFilterProps: { debounceMs: 500 },
-            color: "red",
+            sx: {
+              bgcolor: "#eee",
+            },
           },
         }}
         initialState={{
