@@ -68,7 +68,7 @@ const FormIncomeExpense = ({ formType, url }) => {
 
         if (res.ok) {
           setNotification(
-            formType + " UPDATED SUCCESSFULY:" + res.statusText,
+            formType + " UPDATED SUCCESSFULY: " + res.statusText,
             "success"
           );
           setId(null);
@@ -107,7 +107,7 @@ const FormIncomeExpense = ({ formType, url }) => {
         setNotification("SOMETHING WENT WRONG: " + error, "error");
       }
     }
-    //clear the input after submit
+    //clear states and inputs after submit
     setId("");
     setCategory("");
     setDescription("");
@@ -226,7 +226,7 @@ const FormIncomeExpense = ({ formType, url }) => {
       </Box>
 
       {/* MUI DATAGRID */}
-      <ShowDataGrid url={url} formState={formState} />
+      <ShowDataGrid url={url} formState={formState} formType={formType} />
     </>
   );
 };

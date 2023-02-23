@@ -9,11 +9,11 @@ import { Button } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 import useNotification from "../hooks/useNotification";
 
-const ShowDataGrid = ({ url, formState }) => {
+const ShowDataGrid = ({ url, formState, formType }) => {
   const [tableData, setTableData] = useState([]);
 
   //HOOK Notification
-  const { loading, showLoading } = useNotification();
+  const { setNotification, loading, showLoading } = useNotification();
 
   const onEditClick = (e, row) => {
     formState.setId(row.id);
@@ -24,7 +24,29 @@ const ShowDataGrid = ({ url, formState }) => {
     formState.setSubmitText("EDIT");
   };
 
-  const onDeleteClick = (e, row) => {};
+  const onDeleteClick = async (e, row) => {
+    //START LOADING
+    showLoading(true);
+    try {
+      const res = await fetch(url + "/" + row.id, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        setNotification(
+          formType + " DELETE SUCCESSFULY: " + res.statusText,
+          "success"
+        );
+        formState.setId(row.id);
+      } else {
+        setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
+      }
+      //END LOADING
+      showLoading(false);
+    } catch (error) {
+      setNotification("SOMETHING WENT WRONG: " + error, "error");
+    }
+  };
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },

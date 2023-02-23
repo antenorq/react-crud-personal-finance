@@ -66,27 +66,6 @@
       "id": 6
     },
     {
-      "category": 2,
-      "description": "zs",
-      "value": "8778.20",
-      "date": "2023-02-08T05:00:00.000Z",
-      "id": 7
-    },
-    {
-      "category": 1,
-      "description": "asas",
-      "value": "1111",
-      "date": "2023-02-01T05:00:00.000Z",
-      "id": 8
-    },
-    {
-      "category": 1,
-      "description": "aaaaaaaa",
-      "value": "1111.00",
-      "date": "2023-02-01T05:00:00.000Z",
-      "id": 9
-    },
-    {
       "category": 1,
       "description": "OQAIPOQWIEQWE",
       "value": "3600.00",
@@ -171,13 +150,6 @@
       "date": "2023-02-19T05:00:00.000Z"
     },
     {
-      "category": 2,
-      "description": "aaa",
-      "value": "150",
-      "date": "2023-02-19T05:00:00.000Z",
-      "id": 22
-    },
-    {
       "id": 23,
       "category": 1,
       "description": "bbb2",
@@ -187,7 +159,7 @@
     {
       "id": 24,
       "category": 2,
-      "description": "ccc1",
+      "description": "ccc2",
       "value": "91100",
       "date": "2023-02-19T05:00:00.000Z"
     }
