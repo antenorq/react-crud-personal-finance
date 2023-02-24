@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Container from "@mui/material/Container";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import useNotification from "../hooks/useNotification";
 import {
@@ -14,14 +14,15 @@ import {
 } from "@mui/material";
 
 const Category = () => {
-  const [id, setId] = useState(null);
   const [category_type, setCategoryType] = useState("");
-  const [description, setDescription] = useState(null);
+  const [description, setDescription] = useState("");
 
   //HOOK Notification
   const { setNotification, showLoading } = useNotification();
 
   const navigate = useNavigate();
+
+  let { id } = useParams();
 
   const url = "http://localhost:3000/categories";
 
@@ -35,7 +36,7 @@ const Category = () => {
     if (id) {
       try {
         const data = { id, category_type, description };
-        const res = await fetch(url, {
+        const res = await fetch(url + "/" + id, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -48,7 +49,7 @@ const Category = () => {
             "CATEGORY UPDATED SUCCESSFULY: " + res.statusText,
             "success"
           );
-          navigate("/category-list");
+          navigate("/category");
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
         }
@@ -75,7 +76,8 @@ const Category = () => {
             "CATEGORY CREATED SUCCESSFULY: " + res.statusText,
             "success"
           );
-          navigate("/category-list");
+          //redirect to grid page
+          navigate("/category");
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
         }

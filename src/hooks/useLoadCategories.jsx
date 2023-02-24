@@ -3,16 +3,15 @@ import useNotification from "../hooks/useNotification";
 
 const useLoadCategories = (formType) => {
   const [categories, setCategories] = useState([]);
-
+  var url_categories;
   if (formType === "income") {
-    var url_categories = "http://localhost:3000/categories?category_type=1";
+    url_categories = "http://localhost:3000/categories?category_type=1";
   }
   if (formType === "expense") {
-    var url_categories = "http://localhost:3000/categories?category_type=2";
+    url_categories = "http://localhost:3000/categories?category_type=2";
   }
-
   if (formType === null) {
-    var url_categories = "http://localhost:3000/categories";
+    url_categories = "http://localhost:3000/categories";
   }
 
   //HOOK Notification

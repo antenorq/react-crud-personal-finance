@@ -6,12 +6,12 @@ import Login from "./pages/Login";
 import Income from "./pages/Income";
 import Expense from "./pages/Expense";
 import Dashboard from "./pages/Dashboard";
-import Category from "./pages/Category";
+import CategoryList from "./pages/CategoryList";
+import CategoryForm from "./pages/CategoryForm";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { NotificationContext } from "./context/NotificationContext";
-import CategoryList from "./pages/CategoryList";
 
 import "./app.css";
 
@@ -53,16 +53,22 @@ function App() {
           />
           <Route
             path="/category"
-            element={user ? <Category /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/category/edit/:id"
-            element={user ? <Category /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/category-list"
             element={user ? <CategoryList /> : <Navigate to="/" />}
           />
+          <Route
+            path="/category/create"
+            element={user ? <CategoryForm /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/category/update/:id"
+            element={user ? <CategoryForm /> : <Navigate to="/" />}
+          />
+          {/*
+          <Route
+            path="/category/:id"
+            element={user ? <CategoryView /> : <Navigate to="/" />}
+          />
+        */}
         </Routes>
       </Container>
     </BrowserRouter>

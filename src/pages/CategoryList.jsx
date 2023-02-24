@@ -4,19 +4,23 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import useLoadCategories from "../hooks/useLoadCategories";
 import useNotification from "../hooks/useNotification";
 import { Button, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CategoryList = () => {
-  const [tableData, setTableData] = useState([]);
-
   const url = "http://localhost:3000/categories";
 
-  //HOOK LOADING CATEGORIES SELECT
+  //HOOK LOADING ALL CATEGORIES
   const categories = useLoadCategories(null);
+
+  const navigate = useNavigate();
 
   //HOOK Notification
   const { setNotification, showLoading } = useNotification();
 
-  const onEditClick = (e, row) => {};
+  const onEditClick = (e, row) => {
+    navigate("/category/update/" + row.id);
+  };
 
   const onDeleteClick = async (e, row) => {
     //START LOADING
@@ -94,14 +98,19 @@ const CategoryList = () => {
     >
       <Typography
         align="center"
-        color="success.light"
+        color="primary"
         variant="h4"
         component="h2"
         gutterBottom
       >
         Category List
       </Typography>
-      <div style={{ height: 500, marginTop: "30px" }}>
+      <Link to="/category/create">
+        <Button variant="contained" size="medium">
+          Create
+        </Button>
+      </Link>
+      <div style={{ height: 500, marginTop: "10px" }}>
         <DataGrid
           rows={categories}
           columns={columns}

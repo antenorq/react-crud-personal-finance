@@ -6,7 +6,7 @@ import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import CancelIcon from "@mui/icons-material/Cancel";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import KeyIcon from "@mui/icons-material/Key";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import style from "./dashboard.module.css";
 
@@ -23,21 +23,21 @@ const Dashboard = () => {
       columnSpacing={{ xs: 2, sm: 2, md: 4 }}
     >
       <Grid item xs={6} sm={4} md={4} lg={2}>
-        <NavLink to="/income">
+        <Link to="/income">
           <Paper className={style.paper} elevation={2} sx={paperstyle}>
             <AddCircleIcon color="success" sx={iconsize} />
             <Typography variant="h6">INCOME</Typography>
           </Paper>
-        </NavLink>
+        </Link>
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>
-        <NavLink to="/expense">
+        <Link to="/expense">
           <Paper className={style.paper} elevation={2} sx={paperstyle}>
             <RemoveCircleIcon color="error" sx={iconsize} />
             <Typography variant="h6">EXPENSE</Typography>
           </Paper>
-        </NavLink>
+        </Link>
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>
@@ -48,12 +48,12 @@ const Dashboard = () => {
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>
-        <NavLink to="/category">
+        <Link to="/category">
           <Paper className={style.paper} elevation={2} sx={paperstyle}>
             <PostAddIcon color="primary" sx={iconsize} />
             <Typography variant="h6">CATEGORY</Typography>
           </Paper>
-        </NavLink>
+        </Link>
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>
