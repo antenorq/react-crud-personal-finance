@@ -8,10 +8,19 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const CategoryList = () => {
-  const url = "http://localhost:3000/categories";
+  const [tableData, setTableData] = useState([]);
+  const [loadGrid, setLoadGrid] = useState(false);
 
   //HOOK LOADING ALL CATEGORIES
-  const categories = useLoadCategories(null);
+  //const categories = useLoadCategories("all");
+
+  const url = "http://localhost:3000/categories";
+
+  useEffect(() => {
+    fetch(url)
+      .then((data) => data.json())
+      .then((data) => setTableData(data));
+  }, [loadGrid]);
 
   const navigate = useNavigate();
 
@@ -32,6 +41,8 @@ const CategoryList = () => {
 
       if (res.ok) {
         setNotification(" DELETED SUCCESSFULY:" + res.statusText, "success");
+        //setLoadGrid activate useEffect to reload the Grid
+        loadGrid ? setLoadGrid(false) : setLoadGrid(true);
       } else {
         setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
       }
@@ -112,7 +123,7 @@ const CategoryList = () => {
       </Link>
       <div style={{ height: 500, marginTop: "10px" }}>
         <DataGrid
-          rows={categories}
+          rows={tableData}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
           //components={{ Toolbar: GridToolbar, LoadingOverlay: LinearProgress }}

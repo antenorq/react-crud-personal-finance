@@ -10,7 +10,7 @@ const useLoadCategories = (formType) => {
   if (formType === "expense") {
     url_categories = "http://localhost:3000/categories?category_type=2";
   }
-  if (formType === null) {
+  if (formType === "all") {
     url_categories = "http://localhost:3000/categories";
   }
 
