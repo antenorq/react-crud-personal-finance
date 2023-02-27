@@ -55,25 +55,29 @@ export default function AreaAppBar() {
             Home
           </Button>
 
-          <Button
-            component={NavLink}
-            to={"/about"}
-            variant="contained"
-            color="info"
-            sx={{ display: { xs: "none", md: "flex" }, mx: "5px" }}
-          >
-            Register
-          </Button>
+          {user === null && (
+            <>
+              <Button
+                component={NavLink}
+                to={"/register"}
+                variant="contained"
+                color="info"
+                sx={{ display: { xs: "none", md: "flex" }, mx: "5px" }}
+              >
+                Register
+              </Button>
 
-          <Button
-            component={NavLink}
-            to={"/login"}
-            variant="contained"
-            color="info"
-            sx={{ display: { xs: "none", md: "flex" }, mx: "5px" }}
-          >
-            Login
-          </Button>
+              <Button
+                component={NavLink}
+                to={"/login"}
+                variant="contained"
+                color="info"
+                sx={{ display: { xs: "none", md: "flex" }, mx: "5px" }}
+              >
+                Login
+              </Button>
+            </>
+          )}
         </Toolbar>
         {loading && <LinearProgress />}
       </AppBar>

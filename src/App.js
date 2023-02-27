@@ -8,6 +8,7 @@ import Expense from "./pages/Expense";
 import Dashboard from "./pages/Dashboard";
 import CategoryList from "./pages/CategoryList";
 import CategoryForm from "./pages/CategoryForm";
+import Register from "./pages/Register";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
@@ -63,12 +64,10 @@ function App() {
             path="/category/update/:id"
             element={user ? <CategoryForm /> : <Navigate to="/" />}
           />
-          {/*
           <Route
-            path="/category/:id"
-            element={user ? <CategoryView /> : <Navigate to="/" />}
+            path="/register"
+            element={!user ? <Register /> : <Navigate to="/" />}
           />
-        */}
         </Routes>
       </Container>
     </BrowserRouter>

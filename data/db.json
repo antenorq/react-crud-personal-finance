@@ -366,14 +366,9 @@
       "id": 6
     },
     {
-      "id": 7,
-      "category_type": 1,
-      "description": "aaa31"
-    },
-    {
       "id": 8,
       "category_type": 2,
-      "description": "expsene test2"
+      "description": "expense test3"
     }
   ]
 }
