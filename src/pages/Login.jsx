@@ -45,7 +45,7 @@ export default function SignInSide() {
         if (result.user) {
           setNotification("SUCCESSUFLY LOGED IN", "success");
           setPassword("");
-          setUser(result.user.name);
+          setUser(result.user);
           navigate("/");
         } else if (result === "Cannot find user") {
           setNotification("CANNOT FIND THIS EMAIL", "error");
@@ -147,7 +147,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

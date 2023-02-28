@@ -1,8 +1,8 @@
 a.active {
   font-weight: bold;
-  background-color: rgb(255, 255, 255);
-  color: #555;
+  background-color: rgb(0, 88, 165);
 }
+
 a {
   text-decoration: none;
   color: #555;

@@ -1,25 +1,18 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Antenor",
-      "login": "antenor",
-      "email": "antenor@gmail.com",
-      "password": "123456"
-    },
-    {
-      "id": 2,
-      "name": "Maria",
-      "login": "maria",
-      "email": "maria@gmail.com",
-      "password": "1234567"
-    },
-    {
       "id": 3,
       "name": "Antenor",
       "login": "antenor",
       "email": "antenorq@gmail.com",
       "password": "$2a$10$i6TsQsTUXFp1kYVStJMoOOwcdqLyRQ.N3CoIMUmBDPKCqf4Zvgi7i"
+    },
+    {
+      "id": 4,
+      "name": "test",
+      "login": "test",
+      "email": "test@gmail.com",
+      "password": "$2a$10$9rlyv0JmAC3Bm2tpvcH5SOoRlTimzxrcKjg3/Glf7ujhzQyv.g8Ge"
     }
   ],
   "incomes": [
@@ -354,11 +347,6 @@
       "category_type": 2,
       "description": "Car Insurance",
       "id": 4
-    },
-    {
-      "category_type": 1,
-      "description": "aaa1",
-      "id": 5
     },
     {
       "category_type": 1,

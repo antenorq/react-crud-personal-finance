@@ -2,13 +2,16 @@ import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Alert from "@mui/material/Alert";
 import AreaAppBar from "./components/AreaAppBar";
+
 import Login from "./pages/Login";
 import Income from "./pages/Income";
 import Expense from "./pages/Expense";
 import Dashboard from "./pages/Dashboard";
 import CategoryList from "./pages/CategoryList";
 import CategoryForm from "./pages/CategoryForm";
+import Search from "./pages/Search";
 import Register from "./pages/Register";
+
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
@@ -67,6 +70,14 @@ function App() {
           <Route
             path="/register"
             element={!user ? <Register /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/register/update/:id"
+            element={user ? <Register /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/search"
+            element={user ? <Search /> : <Navigate to="/" />}
           />
         </Routes>
       </Container>

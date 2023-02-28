@@ -42,7 +42,7 @@ export default function AreaAppBar() {
           </IconButton>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            PERSONAL FINANCE - {user}
+            PERSONAL FINANCE
           </Typography>
 
           <Button
@@ -54,6 +54,40 @@ export default function AreaAppBar() {
           >
             Home
           </Button>
+
+          {user && (
+            <>
+              <Button
+                component={NavLink}
+                to={"/income"}
+                variant="contained"
+                color="info"
+                sx={{ display: { xs: "none", md: "flex" }, mx: "5px" }}
+              >
+                Income
+              </Button>
+
+              <Button
+                component={NavLink}
+                to={"/expense"}
+                variant="contained"
+                color="info"
+                sx={{ display: { xs: "none", md: "flex" }, mx: "5px" }}
+              >
+                Expense
+              </Button>
+
+              <Button
+                component={NavLink}
+                to={"/register/update/" + user.id}
+                variant="contained"
+                color="info"
+                sx={{ display: { xs: "none", md: "flex" }, mx: "5px" }}
+              >
+                {user.name}
+              </Button>
+            </>
+          )}
 
           {user === null && (
             <>

@@ -1,4 +1,4 @@
-import React from "react";
+import { useContext } from "react";
 import { Grid, Paper, Typography } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
@@ -7,10 +7,13 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import KeyIcon from "@mui/icons-material/Key";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 import style from "./dashboard.module.css";
 
 const Dashboard = () => {
+  const { user } = useContext(AuthContext);
+
   const iconsize = {
     fontSize: { xs: "80px", md: "100px", lg: "120px" },
   };
@@ -41,10 +44,12 @@ const Dashboard = () => {
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>
-        <Paper className={style.paper} elevation={2} sx={paperstyle}>
-          <ManageSearchIcon color="primary" sx={iconsize} />
-          <Typography variant="h6">SEARCH</Typography>
-        </Paper>
+        <Link to="/search">
+          <Paper className={style.paper} elevation={2} sx={paperstyle}>
+            <ManageSearchIcon color="primary" sx={iconsize} />
+            <Typography variant="h6">SEARCH</Typography>
+          </Paper>
+        </Link>
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>
@@ -57,10 +62,12 @@ const Dashboard = () => {
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>
-        <Paper className={style.paper} elevation={2} sx={paperstyle}>
-          <KeyIcon color="primary" sx={iconsize} />
-          <Typography variant="h6">PASSWORD</Typography>
-        </Paper>
+        <Link to={"/register/update/" + user.id}>
+          <Paper className={style.paper} elevation={2} sx={paperstyle}>
+            <KeyIcon color="primary" sx={iconsize} />
+            <Typography variant="h6">PASSWORD</Typography>
+          </Paper>
+        </Link>
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-
 import useNotification from "../hooks/useNotification";
 import {
   Container,
@@ -8,14 +7,16 @@ import {
   Box,
   Grid,
   Button,
-  MenuItem,
   FormControl,
   Typography,
+  MenuItem,
 } from "@mui/material";
 
-const Category = () => {
-  const [category_type, setCategoryType] = useState("");
-  const [description, setDescription] = useState("");
+const Search = () => {
+  const [name, setName] = useState("");
+  const [login, setLogin] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   //HOOK Notification
   const { setNotification, showLoading } = useNotification();
@@ -24,20 +25,21 @@ const Category = () => {
 
   let { id } = useParams();
 
-  const url = "http://localhost:3000/categories";
+  const url = "http://localhost:3000/users";
 
   useEffect(() => {
     if (id) {
       fetch(url + "/" + id)
         .then((data) => data.json())
         .then((data) => {
-          setCategoryType(data.category_type);
-          setDescription(data.description);
+          setName(data.name);
+          setLogin(data.login);
+          setEmail(data.email);
         });
     }
   }, []);
 
-  //POST/EDIT CATEGORY
+  //Search
   const handleSubmit = async (e) => {
     //START LOADING
     showLoading(true);
@@ -46,7 +48,7 @@ const Category = () => {
     //EDIT - METHOD PUT
     if (id) {
       try {
-        const data = { id, category_type, description };
+        const data = { id, name, login, email, password };
         const res = await fetch(url + "/" + id, {
           method: "PUT",
           headers: {
@@ -57,10 +59,10 @@ const Category = () => {
 
         if (res.ok) {
           setNotification(
-            "CATEGORY UPDATED SUCCESSFULY: " + res.statusText,
+            "USER UPDATED SUCCESSFULY: " + res.statusText,
             "success"
           );
-          navigate("/category");
+          navigate("/");
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
         }
@@ -73,7 +75,7 @@ const Category = () => {
     //CREATE - METHOD POST
     else {
       try {
-        const data = { category_type, description };
+        const data = { name, login, email, password };
         const res = await fetch(url, {
           method: "POST",
           headers: {
@@ -84,11 +86,11 @@ const Category = () => {
 
         if (res.ok) {
           setNotification(
-            "CATEGORY CREATED SUCCESSFULY: " + res.statusText,
+            "USER CREATED SUCCESSFULY: " + res.statusText,
             "success"
           );
-          //redirect to grid page
-          navigate("/category");
+          //redirect to login page
+          navigate("/login");
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
         }
@@ -100,8 +102,10 @@ const Category = () => {
     }
 
     //clear states and inputs after submit or edit
-    setCategoryType(null);
-    setDescription(null);
+    setName(null);
+    setLogin(null);
+    setEmail(null);
+    setPassword(null);
   };
 
   return (
@@ -121,7 +125,7 @@ const Category = () => {
           component="h2"
           gutterBottom
         >
-          {id ? "Update Category" : "Create Category"}
+          Search
         </Typography>
 
         {/* FORM */}
@@ -133,14 +137,14 @@ const Category = () => {
               columnSpacing={{ xs: 2, sm: 2, md: 4 }}
               sx={{ alignContent: "center" }}
             >
-              <Grid item xs={12} md={6} lg={4}>
+              <Grid item xs={12} md={6} lg={3}>
                 <TextField
                   select
-                  value={category_type}
-                  label="Category"
+                  value={name}
+                  label="Income or Expense"
                   required
                   margin="normal"
-                  onChange={(e) => setCategoryType(e.target.value)}
+                  onChange={(e) => setName(e.target.value)}
                   sx={{ backgroundColor: "#fff", width: "100%" }}
                 >
                   <MenuItem key={1} value={1}>
@@ -152,36 +156,61 @@ const Category = () => {
                 </TextField>
               </Grid>
 
-              <Grid item xs={12} md={6} lg={4}>
+              <Grid item xs={12} md={6} lg={2}>
                 <TextField
-                  name="description"
-                  label="Description"
+                  name="login"
+                  label="From"
                   type="text"
                   required
                   margin="normal"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  value={login}
+                  onChange={(e) => setLogin(e.target.value)}
                   sx={{ backgroundColor: "#fff", width: "100%" }}
                 />
               </Grid>
 
-              <Grid item xs={12} md={12} lg={4}>
+              <Grid item xs={12} md={6} lg={2}>
+                <TextField
+                  name="email"
+                  label="To"
+                  type="text"
+                  required
+                  margin="normal"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  sx={{ backgroundColor: "#fff", width: "100%" }}
+                />
+              </Grid>
+
+              <Grid item xs={12} md={6} lg={3}>
+                <TextField
+                  name="password"
+                  label="Contem Description"
+                  type="text"
+                  margin="normal"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  sx={{ backgroundColor: "#fff", width: "100%" }}
+                />
+              </Grid>
+
+              <Grid item xs={12} md={12} lg={2}>
                 <Button
                   type="submit"
                   variant="contained"
                   size="large"
                   sx={{ marginTop: "18px", width: "100%", p: "12px" }}
                 >
-                  SUBMIT
+                  Search
                 </Button>
               </Grid>
             </Grid>
           </FormControl>
         </Box>
       </Container>
-      <Link to="/category">
+      <Link to="/">
         <Button
-          type="button"
+          type="submit"
           variant="contained"
           size="medium"
           sx={{ marginTop: "18px" }}
@@ -193,4 +222,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default Search;
