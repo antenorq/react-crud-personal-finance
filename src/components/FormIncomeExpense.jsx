@@ -198,7 +198,9 @@ const FormIncomeExpense = ({ formType, url }) => {
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <MobileDatePicker
                   value={date}
+                  inputFormat="YYYY-MM-DD"
                   onChange={(newDate) => {
+                    console.log(newDate);
                     setDate(newDate);
                   }}
                   renderInput={(params) => (
