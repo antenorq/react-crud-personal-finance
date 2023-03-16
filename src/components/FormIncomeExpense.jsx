@@ -3,6 +3,7 @@ import { NumericFormat } from "react-number-format";
 import useNotification from "../hooks/useNotification";
 import useLoadCategories from "../hooks/useLoadCategories";
 import ShowDataGrid from "../components/ShowDataGrid";
+import dayjs from "dayjs";
 import {
   TextField,
   Box,
@@ -17,6 +18,7 @@ import {
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const FormIncomeExpense = ({ formType, url }) => {
   const [id, setId] = useState(null);
@@ -198,11 +200,10 @@ const FormIncomeExpense = ({ formType, url }) => {
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <MobileDatePicker
                   value={date}
-                  inputFormat="YYYY-MM-DD"
                   onChange={(newDate) => {
-                    console.log(newDate);
-                    setDate(newDate);
+                    setDate(dayjs(newDate).format("YYYY-MM-DD"));
                   }}
+                  inputFormat="YYYY-MM-DD"
                   renderInput={(params) => (
                     <TextField
                       {...params}

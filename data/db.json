@@ -262,11 +262,11 @@
       "id": 55
     },
     {
+      "id": 56,
       "category": 1,
       "description": "444",
       "value": "444",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 56
+      "date": "2023-02-24T05:00:00.000Z"
     },
     {
       "category": 2,
@@ -283,11 +283,18 @@
       "date": "2023-02-19T05:00:00.000Z"
     },
     {
+      "id": 57,
       "category": 1,
-      "description": "ASDDASD",
-      "value": "10000",
-      "date": "2023-03-24T04:00:00.000Z",
-      "id": 57
+      "description": "ppppp",
+      "value": "454.20",
+      "date": "2023-03-18"
+    },
+    {
+      "id": 58,
+      "category": 1,
+      "description": "uiuiuiu",
+      "value": "1500",
+      "date": "2023-03-15"
     }
   ],
   "expenses": [
@@ -325,6 +332,13 @@
       "description": "seguro carroo0",
       "value": "256.20",
       "date": "2023-02-21T05:00:00.000Z"
+    },
+    {
+      "category": 3,
+      "description": "ioi",
+      "value": "458",
+      "date": "2023-03-04",
+      "id": 6
     }
   ],
   "categories": [
