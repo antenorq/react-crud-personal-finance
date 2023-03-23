@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useNotification from "../hooks/useNotification";
+import useLoadCategories from "../hooks/useLoadCategories";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import {
   Container,
   TextField,
@@ -12,32 +14,28 @@ import {
   MenuItem,
 } from "@mui/material";
 
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+import dayjs from "dayjs";
+
 const Search = () => {
-  const [name, setName] = useState("");
-  const [login, setLogin] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [type, setType] = useState("");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const [description, setDescription] = useState("");
+
+  const [tableData, setTableData] = useState([]);
+
+  const [loadGrid, setLoadGrid] = useState(false);
 
   //HOOK Notification
   const { setNotification, showLoading } = useNotification();
 
-  const navigate = useNavigate();
+  //HOOK LOADING CATEGORIES
+  const categories = useLoadCategories("income");
 
-  let { id } = useParams();
-
-  const url = "http://localhost:3000/users";
-
-  useEffect(() => {
-    if (id) {
-      fetch(url + "/" + id)
-        .then((data) => data.json())
-        .then((data) => {
-          setName(data.name);
-          setLogin(data.login);
-          setEmail(data.email);
-        });
-    }
-  }, []);
+  //http://localhost:3000/incomes?description_like=ppp&date_gte=2023-02-01&date_lte=2023-03-19
 
   //Search
   const handleSubmit = async (e) => {
@@ -45,68 +43,47 @@ const Search = () => {
     showLoading(true);
     e.preventDefault();
 
-    //EDIT - METHOD PUT
-    if (id) {
-      try {
-        const data = { id, name, login, email, password };
-        const res = await fetch(url + "/" + id, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+    const url =
+      "http://localhost:8000/" +
+      (type === 1 ? "incomes" : "expenses") +
+      "?date_gte=" +
+      from +
+      "&date_lte=" +
+      to +
+      "&description_like=" +
+      description;
 
-        if (res.ok) {
-          setNotification(
-            "USER UPDATED SUCCESSFULY: " + res.statusText,
-            "success"
-          );
-          navigate("/");
-        } else {
-          setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
-        }
-        //END LOADING
-        showLoading(false);
-      } catch (error) {
-        setNotification("SOMETHING WENT WRONG: " + error, "error");
-      }
-    }
-    //CREATE - METHOD POST
-    else {
-      try {
-        const data = { name, login, email, password };
-        const res = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
-
-        if (res.ok) {
-          setNotification(
-            "USER CREATED SUCCESSFULY: " + res.statusText,
-            "success"
-          );
-          //redirect to login page
-          navigate("/login");
-        } else {
-          setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
-        }
-        //END LOADING
-        showLoading(false);
-      } catch (error) {
-        setNotification("SOMETHING WENT WRONG: " + error, "error");
-      }
-    }
+    fetch(url)
+      .then((data) => data.json())
+      .then((data) => setTableData(data));
 
     //clear states and inputs after submit or edit
-    setName(null);
-    setLogin(null);
-    setEmail(null);
-    setPassword(null);
+    //setType(null);
+    //setFrom(null);
+    //setTo(null);
+    //setDescription(null);
+
+    //END LOADING
+    showLoading(false);
   };
+
+  const columns = [
+    { field: "id", headerName: "ID", flex: 0.5 },
+    {
+      field: "category",
+      headerName: "Category",
+      flex: 1,
+      renderCell: (params) => {
+        var result = categories.find(
+          (categorie) => categorie.id === params.row.category
+        );
+        if (result) return result.description;
+      },
+    },
+    { field: "description", headerName: "Description", flex: 1 },
+    { field: "value", headerName: "Value", flex: 0.5 },
+    { field: "date", headerName: "Date", flex: 1 },
+  ];
 
   return (
     <>
@@ -140,11 +117,12 @@ const Search = () => {
               <Grid item xs={12} md={6} lg={3}>
                 <TextField
                   select
-                  value={name}
+                  name="type"
+                  value={type}
                   label="Income or Expense"
                   required
                   margin="normal"
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => setType(e.target.value)}
                   sx={{ backgroundColor: "#fff", width: "100%" }}
                 >
                   <MenuItem key={1} value={1}>
@@ -157,39 +135,57 @@ const Search = () => {
               </Grid>
 
               <Grid item xs={12} md={6} lg={2}>
-                <TextField
-                  name="login"
-                  label="From"
-                  type="text"
-                  required
-                  margin="normal"
-                  value={login}
-                  onChange={(e) => setLogin(e.target.value)}
-                  sx={{ backgroundColor: "#fff", width: "100%" }}
-                />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <MobileDatePicker
+                    value={from}
+                    onChange={(newDate) => {
+                      setFrom(dayjs(newDate).format("YYYY-MM-DD"));
+                    }}
+                    inputFormat="YYYY-MM-DD"
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        margin="normal"
+                        name="from"
+                        label="From"
+                        required
+                        sx={{ backgroundColor: "#fff", width: "100%" }}
+                      />
+                    )}
+                  />
+                </LocalizationProvider>
               </Grid>
 
               <Grid item xs={12} md={6} lg={2}>
-                <TextField
-                  name="email"
-                  label="To"
-                  type="text"
-                  required
-                  margin="normal"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  sx={{ backgroundColor: "#fff", width: "100%" }}
-                />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <MobileDatePicker
+                    value={to}
+                    onChange={(newDate) => {
+                      setTo(dayjs(newDate).format("YYYY-MM-DD"));
+                    }}
+                    inputFormat="YYYY-MM-DD"
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        margin="normal"
+                        name="to"
+                        label="To"
+                        required
+                        sx={{ backgroundColor: "#fff", width: "100%" }}
+                      />
+                    )}
+                  />
+                </LocalizationProvider>
               </Grid>
 
               <Grid item xs={12} md={6} lg={3}>
                 <TextField
-                  name="password"
-                  label="Contem Description"
+                  name="description"
+                  label="Description Contains"
                   type="text"
                   margin="normal"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                   sx={{ backgroundColor: "#fff", width: "100%" }}
                 />
               </Grid>
@@ -207,10 +203,35 @@ const Search = () => {
             </Grid>
           </FormControl>
         </Box>
+
+        <div style={{ height: 500, marginTop: "30px" }}>
+          <DataGrid
+            rows={tableData}
+            columns={columns}
+            components={{
+              Toolbar: GridToolbar,
+            }}
+            componentsProps={{
+              toolbar: {
+                showQuickFilter: true,
+                quickFilterProps: { debounceMs: 500 },
+                sx: {
+                  bgcolor: "#eee",
+                },
+              },
+            }}
+            initialState={{
+              sorting: {
+                sortModel: [{ field: "id", sort: "desc" }],
+              },
+            }}
+            sx={{ backgroundColor: "#fff", overflowY: "scroll" }}
+          />
+        </div>
       </Container>
       <Link to="/">
         <Button
-          type="submit"
+          type="button"
           variant="contained"
           size="medium"
           sx={{ marginTop: "18px" }}

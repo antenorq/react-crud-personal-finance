@@ -24,7 +24,7 @@ const Register = () => {
 
   let { id } = useParams();
 
-  const url = "http://localhost:3000/users";
+  const url = "http://localhost:8000/users";
 
   useEffect(() => {
     if (id) {

@@ -5,13 +5,13 @@ const useLoadCategories = (formType) => {
   const [categories, setCategories] = useState([]);
   var url_categories;
   if (formType === "income") {
-    url_categories = "http://localhost:3000/categories?category_type=1";
+    url_categories = "http://localhost:8000/categories?category_type=1";
   }
   if (formType === "expense") {
-    url_categories = "http://localhost:3000/categories?category_type=2";
+    url_categories = "http://localhost:8000/categories?category_type=2";
   }
   if (formType === "all") {
-    url_categories = "http://localhost:3000/categories";
+    url_categories = "http://localhost:8000/categories";
   }
 
   //HOOK Notification

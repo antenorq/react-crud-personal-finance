@@ -26,7 +26,7 @@ export default function SignInSide() {
 
   const navigate = useNavigate();
 
-  const url = "http://localhost:3000/login";
+  const url = "http://localhost:8000/login";
 
   const handleSubmit = (event) => {
     //START LOADING

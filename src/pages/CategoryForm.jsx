@@ -24,7 +24,7 @@ const Category = () => {
 
   let { id } = useParams();
 
-  const url = "http://localhost:3000/categories";
+  const url = "http://localhost:8000/categories";
 
   useEffect(() => {
     if (id) {

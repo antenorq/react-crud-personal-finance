@@ -1,7 +1,7 @@
 import FormIncomeExpense from "../components/FormIncomeExpense";
 import Container from "@mui/material/Container";
 
-const url_expense = "http://localhost:3000/expenses";
+const url_expense = "http://localhost:8000/expenses";
 
 const Expense = () => {
   return (
