@@ -13,6 +13,13 @@
       "login": "test",
       "email": "test@gmail.com",
       "password": "$2a$10$WONZy1yXhVdb0/gYWmiGZ.mUZfPNnKIsyeZ6VEFgQRSDYH.7GjJhS"
+    },
+    {
+      "email": "qqq@gmail.com",
+      "password": "$2a$10$9v0IxPrTcaE80vcS9ckU6.HEoKCXFZ2nHzUCOYx.7TSj/RFnpQ63W",
+      "name": "qqq",
+      "login": "qqq",
+      "id": 5
     }
   ],
   "incomes": [

@@ -39,6 +39,10 @@ export default function SignInSide() {
     event.preventDefault();
     const data = { email, password };
 
+    setNotification("LOGADO alterar o codigo do login.jsx", "success");
+    setUser("popo");
+    navigate("/");
+    /*
     fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -65,6 +69,7 @@ export default function SignInSide() {
       .catch((error) => {
         setNotification("SOMETHING WENT WRONG: " + error, "error");
       });
+      */
   };
 
   return (
