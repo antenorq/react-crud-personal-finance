@@ -4,14 +4,24 @@ import useNotification from "../hooks/useNotification";
 const useLoadCategories = (formType) => {
   const [categories, setCategories] = useState([]);
   var url_categories;
+
+  //I KNOW I NEED REFACTORE IT TO PUT IN A GLOBAL CONTEXT
+  const devEnv = process.env.NODE_ENV !== "production";
+  const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+
   if (formType === "income") {
-    url_categories = "http://localhost:8000/categories?category_type=1";
+    url_categories =
+      (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) +
+      "/categories?category_type=1";
   }
   if (formType === "expense") {
-    url_categories = "http://localhost:8000/categories?category_type=2";
+    url_categories =
+      (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) +
+      "/categories?category_type=2";
   }
   if (formType === "all") {
-    url_categories = "http://localhost:8000/categories";
+    url_categories =
+      (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) + "/categories";
   }
 
   //HOOK Notification

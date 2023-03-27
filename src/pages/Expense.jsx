@@ -1,7 +1,12 @@
 import FormIncomeExpense from "../components/FormIncomeExpense";
 import Container from "@mui/material/Container";
 
-const url_expense = "http://localhost:8000/expenses";
+//I KNOW I NEED REFACTORE IT TO PUT IN A GLOBAL CONTEXT
+const devEnv = process.env.NODE_ENV !== "production";
+const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+
+const url_expense =
+  (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) + "/expenses";
 
 const Expense = () => {
   return (

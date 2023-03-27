@@ -371,6 +371,11 @@
       "id": 8,
       "category_type": 2,
       "description": "expense test333"
+    },
+    {
+      "category_type": 1,
+      "description": "extra",
+      "id": 9
     }
   ]
 }

@@ -26,7 +26,11 @@ export default function SignInSide() {
 
   const navigate = useNavigate();
 
-  const url = "http://localhost:8000/login";
+  //I KNOW I NEED REFACTORE IT TO PUT IN A GLOBAL CONTEXT
+  const devEnv = process.env.NODE_ENV !== "production";
+  const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+
+  const url = (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) + "/login";
 
   const handleSubmit = (event) => {
     //START LOADING

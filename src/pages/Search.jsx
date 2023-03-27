@@ -43,9 +43,13 @@ const Search = () => {
     showLoading(true);
     e.preventDefault();
 
+    //I KNOW I NEED REFACTORE IT TO PUT IN A GLOBAL CONTEXT
+    const devEnv = process.env.NODE_ENV !== "production";
+    const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+
     const url =
-      "http://localhost:8000/" +
-      (type === 1 ? "incomes" : "expenses") +
+      (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) +
+      (type === 1 ? "/incomes" : "/expenses") +
       "?date_gte=" +
       from +
       "&date_lte=" +
