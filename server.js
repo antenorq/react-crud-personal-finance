@@ -1,4 +1,5 @@
 const jsonServer = require("json-server");
+const auth = require("json-server-auth");
 const server = jsonServer.create();
 const cors = require("cors");
 const router = jsonServer.router("./data/db.json");
@@ -12,6 +13,9 @@ server.use(
     "/api/*": "/$1",
   })
 );
+
+server.db = router.db;
+server.use(auth);
 server.use(router);
 server.use(cors());
 server.listen(PORT, () => {

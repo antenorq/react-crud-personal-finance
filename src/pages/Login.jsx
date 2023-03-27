@@ -30,9 +30,9 @@ export default function SignInSide() {
   const devEnv = process.env.NODE_ENV !== "production";
   const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
 
-  //const url = (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) + "/login";
+  const url = (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) + "/login";
   //const url = (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) + "/users";
-
+  /*
   const url =
     (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) +
     "/users" +
@@ -40,13 +40,17 @@ export default function SignInSide() {
     email +
     "&password=" +
     password;
-
+*/
   const handleSubmit = (event) => {
     //START LOADING
     showLoading(true);
 
     event.preventDefault();
-    //const data = { email, password };
+    const data = { email, password };
+    console.log(url);
+    /*
+    
+    
 
     fetch(url)
       .then((res) => res.json())
@@ -66,8 +70,8 @@ export default function SignInSide() {
       .catch((error) => {
         setNotification("SOMETHING WENT WRONG: " + error, "error");
       });
+*/
 
-    /*
     fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -94,7 +98,6 @@ export default function SignInSide() {
       .catch((error) => {
         setNotification("SOMETHING WENT WRONG: " + error, "error");
       });
-  */
   };
 
   return (
