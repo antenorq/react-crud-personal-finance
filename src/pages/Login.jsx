@@ -30,18 +30,43 @@ export default function SignInSide() {
   const devEnv = process.env.NODE_ENV !== "production";
   const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
 
-  const url = (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) + "/login";
+  //const url = (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) + "/login";
+  //const url = (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) + "/users";
+
+  const url =
+    (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) +
+    "/users" +
+    "?email=" +
+    email +
+    "&password=" +
+    password;
 
   const handleSubmit = (event) => {
     //START LOADING
     showLoading(true);
 
     event.preventDefault();
-    const data = { email, password };
+    //const data = { email, password };
 
-    setNotification("LOGADO alterar o codigo do login.jsx", "success");
-    setUser("popo");
-    navigate("/");
+    fetch(url)
+      .then((res) => res.json())
+      .then((result) => {
+        if (result) {
+          setNotification("SUCCESSUFLY LOGED IN", "success");
+          setPassword("");
+          setUser(email);
+          navigate("/");
+        } else {
+          setNotification("CANNOT FIND THIS USER", "error");
+        }
+
+        //END LOADING
+        showLoading(false);
+      })
+      .catch((error) => {
+        setNotification("SOMETHING WENT WRONG: " + error, "error");
+      });
+
     /*
     fetch(url, {
       method: "POST",
@@ -69,7 +94,7 @@ export default function SignInSide() {
       .catch((error) => {
         setNotification("SOMETHING WENT WRONG: " + error, "error");
       });
-      */
+  */
   };
 
   return (
