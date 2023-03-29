@@ -28,7 +28,7 @@ function App() {
       setMessage(null);
     }, 5000);
     return () => clearTimeout(timer);
-  }, [message]);
+  }, [message, setMessage]);
 
   return (
     <BrowserRouter>
@@ -52,20 +52,26 @@ function App() {
             element={user ? <Expense /> : <Navigate to="/" />}
           />
           <Route
-            path="/xlogin"
+            path="/login"
             element={user ? <Dashboard /> : <Navigate to="/" />}
           />
           <Route
             path="/category"
-            element={user ? <CategoryList /> : <Navigate to="/" />}
+            element={
+              user ? <CategoryList user_id={user.id} /> : <Navigate to="/" />
+            }
           />
           <Route
             path="/category/create"
-            element={user ? <CategoryForm /> : <Navigate to="/" />}
+            element={
+              user ? <CategoryForm user_id={user.id} /> : <Navigate to="/" />
+            }
           />
           <Route
             path="/category/update/:id"
-            element={user ? <CategoryForm /> : <Navigate to="/" />}
+            element={
+              user ? <CategoryForm user_id={user.id} /> : <Navigate to="/" />
+            }
           />
           <Route
             path="/register"
@@ -77,7 +83,7 @@ function App() {
           />
           <Route
             path="/search"
-            element={user ? <Search /> : <Navigate to="/" />}
+            element={user ? <Search user_id={user.id} /> : <Navigate to="/" />}
           />
         </Routes>
       </Container>

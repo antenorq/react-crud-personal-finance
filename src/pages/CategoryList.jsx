@@ -1,18 +1,14 @@
 import { useState, useEffect } from "react";
 import Container from "@mui/material/Container";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import useLoadCategories from "../hooks/useLoadCategories";
 import useNotification from "../hooks/useNotification";
 import { Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const CategoryList = () => {
+const CategoryList = ({ user_id }) => {
   const [tableData, setTableData] = useState([]);
   const [loadGrid, setLoadGrid] = useState(false);
-
-  //HOOK LOADING ALL CATEGORIES
-  //const categories = useLoadCategories("all");
 
   //I KNOW I NEED REFACTORE IT TO PUT IN A GLOBAL CONTEXT
   const devEnv = process.env.NODE_ENV !== "production";
@@ -21,10 +17,10 @@ const CategoryList = () => {
   const url = (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) + "/categories";
 
   useEffect(() => {
-    fetch(url)
+    fetch(url + "?user_id=" + user_id)
       .then((data) => data.json())
       .then((data) => setTableData(data));
-  }, [loadGrid]);
+  }, [loadGrid, url, user_id]);
 
   const navigate = useNavigate();
 
@@ -44,7 +40,7 @@ const CategoryList = () => {
       });
 
       if (res.ok) {
-        setNotification(" DELETED SUCCESSFULY:" + res.statusText, "success");
+        setNotification(" DELETED SUCCESSFULY", "success");
         //setLoadGrid activate useEffect to reload the Grid
         loadGrid ? setLoadGrid(false) : setLoadGrid(true);
       } else {

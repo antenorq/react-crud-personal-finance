@@ -11,6 +11,7 @@ const ShowDataGrid = ({
   categories,
   loadGrid,
   setLoadGrid,
+  user_id,
 }) => {
   const [tableData, setTableData] = useState([]);
 
@@ -18,10 +19,10 @@ const ShowDataGrid = ({
   const { loading, showLoading, setNotification } = useNotification();
 
   useEffect(() => {
-    fetch(url)
+    fetch(url + "?user_id=" + user_id)
       .then((data) => data.json())
       .then((data) => setTableData(data));
-  }, [loadGrid, url]);
+  }, [loadGrid, url, user_id]);
 
   const onEditClick = (e, row) => {
     formState.setId(row.id);
@@ -41,10 +42,7 @@ const ShowDataGrid = ({
       });
 
       if (res.ok) {
-        setNotification(
-          formType + " DELETED SUCCESSFULY:" + res.statusText,
-          "success"
-        );
+        setNotification(formType + " DELETED SUCCESSFULY", "success");
         //setLoadGrid activate useEffect to reload the Grid
         loadGrid ? setLoadGrid(false) : setLoadGrid(true);
       } else {

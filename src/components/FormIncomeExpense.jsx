@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { NumericFormat } from "react-number-format";
 import useNotification from "../hooks/useNotification";
 import useLoadCategories from "../hooks/useLoadCategories";
 import ShowDataGrid from "../components/ShowDataGrid";
+import { AuthContext } from "../context/AuthContext";
 import {
   TextField,
   Box,
@@ -50,6 +51,10 @@ const FormIncomeExpense = ({ formType, url }) => {
   //HOOK LOADING CATEGORIES SELECT
   const categories = useLoadCategories(formType);
 
+  //AUTH CONTEXT TO GET USER
+  const { user } = useContext(AuthContext);
+  const user_id = user.id;
+
   //POST/EDIT INCOME OR EXPENSE
   const handleSubmit = async (e) => {
     //START LOADING
@@ -60,7 +65,7 @@ const FormIncomeExpense = ({ formType, url }) => {
     //IF HAVE ID EDIT - UPDATE - METHOD PUT
     if (id) {
       try {
-        const data = { id, category, description, value, date };
+        const data = { id, category, description, value, date, user_id };
         const res = await fetch(url + "/" + id, {
           method: "PUT",
           headers: {
@@ -70,10 +75,7 @@ const FormIncomeExpense = ({ formType, url }) => {
         });
 
         if (res.ok) {
-          setNotification(
-            formType + " UPDATED SUCCESSFULY: " + res.statusText,
-            "success"
-          );
+          setNotification(formType + " UPDATED SUCCESSFULY", "success");
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
         }
@@ -86,7 +88,7 @@ const FormIncomeExpense = ({ formType, url }) => {
     //IF NO ID - POST - CREATE - METHOD POST
     else {
       try {
-        const data = { category, description, value, date };
+        const data = { category, description, value, date, user_id };
         const res = await fetch(url, {
           method: "POST",
           headers: {
@@ -96,10 +98,7 @@ const FormIncomeExpense = ({ formType, url }) => {
         });
 
         if (res.ok) {
-          setNotification(
-            formType + " REGISTERED SUCCESSFULY:" + res.statusText,
-            "success"
-          );
+          setNotification(formType + " REGISTERED SUCCESSFULY", "success");
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
         }
@@ -239,6 +238,7 @@ const FormIncomeExpense = ({ formType, url }) => {
         categories={categories}
         loadGrid={loadGrid}
         setLoadGrid={setLoadGrid}
+        user_id={user_id}
       />
     </>
   );

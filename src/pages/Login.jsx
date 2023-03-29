@@ -5,13 +5,12 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import useNotification from "../hooks/useNotification";
 
@@ -31,46 +30,13 @@ export default function SignInSide() {
   const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
 
   const url = (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) + "/login";
-  //const url = (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) + "/users";
-  /*
-  const url =
-    (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) +
-    "/users" +
-    "?email=" +
-    email +
-    "&password=" +
-    password;
-*/
+
   const handleSubmit = (event) => {
     //START LOADING
     showLoading(true);
 
     event.preventDefault();
     const data = { email, password };
-    console.log(url);
-    /*
-    
-    
-
-    fetch(url)
-      .then((res) => res.json())
-      .then((result) => {
-        if (result) {
-          setNotification("SUCCESSUFLY LOGED IN", "success");
-          setPassword("");
-          setUser(email);
-          navigate("/");
-        } else {
-          setNotification("CANNOT FIND THIS USER", "error");
-        }
-
-        //END LOADING
-        showLoading(false);
-      })
-      .catch((error) => {
-        setNotification("SOMETHING WENT WRONG: " + error, "error");
-      });
-*/
 
     fetch(url, {
       method: "POST",
@@ -184,7 +150,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/register" variant="body2">
+                <Link to="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

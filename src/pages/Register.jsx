@@ -40,7 +40,7 @@ const Register = () => {
           setEmail(data.email);
         });
     }
-  }, []);
+  }, [id, url]);
 
   //POST/EDIT USER
   const handleSubmit = async (e) => {
@@ -61,10 +61,7 @@ const Register = () => {
         });
 
         if (res.ok) {
-          setNotification(
-            "USER UPDATED SUCCESSFULY: " + res.statusText,
-            "success"
-          );
+          setNotification("USER UPDATED SUCCESSFULY", "success");
           navigate("/");
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
@@ -88,10 +85,7 @@ const Register = () => {
         });
 
         if (res.ok) {
-          setNotification(
-            "USER CREATED SUCCESSFULY: " + res.statusText,
-            "success"
-          );
+          setNotification("USER CREATED SUCCESSFULY", "success");
           //redirect to login page
           navigate("/login");
         } else {

@@ -13,7 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const Category = () => {
+const Category = ({ user_id }) => {
   const [category_type, setCategoryType] = useState("");
   const [description, setDescription] = useState("");
 
@@ -39,7 +39,7 @@ const Category = () => {
           setDescription(data.description);
         });
     }
-  }, []);
+  }, [id, url]);
 
   //POST/EDIT CATEGORY
   const handleSubmit = async (e) => {
@@ -50,7 +50,7 @@ const Category = () => {
     //EDIT - METHOD PUT
     if (id) {
       try {
-        const data = { id, category_type, description };
+        const data = { id, category_type, description, user_id };
         const res = await fetch(url + "/" + id, {
           method: "PUT",
           headers: {
@@ -60,10 +60,7 @@ const Category = () => {
         });
 
         if (res.ok) {
-          setNotification(
-            "CATEGORY UPDATED SUCCESSFULY: " + res.statusText,
-            "success"
-          );
+          setNotification("CATEGORY UPDATED SUCCESSFULY", "success");
           navigate("/category");
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
@@ -77,7 +74,7 @@ const Category = () => {
     //CREATE - METHOD POST
     else {
       try {
-        const data = { category_type, description };
+        const data = { category_type, description, user_id };
         const res = await fetch(url, {
           method: "POST",
           headers: {
@@ -87,10 +84,7 @@ const Category = () => {
         });
 
         if (res.ok) {
-          setNotification(
-            "CATEGORY CREATED SUCCESSFULY: " + res.statusText,
-            "success"
-          );
+          setNotification("CATEGORY CREATED SUCCESSFULY", "success");
           //redirect to grid page
           navigate("/category");
         } else {
@@ -141,7 +135,7 @@ const Category = () => {
                 <TextField
                   select
                   value={category_type}
-                  label="Category"
+                  label="Category Type"
                   required
                   margin="normal"
                   onChange={(e) => setCategoryType(e.target.value)}

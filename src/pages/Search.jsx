@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import useNotification from "../hooks/useNotification";
 import useLoadCategories from "../hooks/useLoadCategories";
@@ -19,23 +19,19 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import dayjs from "dayjs";
 
-const Search = () => {
-  const [type, setType] = useState("");
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
+const Search = ({ user_id }) => {
+  const [type, setType] = useState(null);
+  const [from, setFrom] = useState(null);
+  const [to, setTo] = useState(null);
   const [description, setDescription] = useState("");
 
   const [tableData, setTableData] = useState([]);
 
-  const [loadGrid, setLoadGrid] = useState(false);
-
   //HOOK Notification
-  const { setNotification, showLoading } = useNotification();
+  const { showLoading } = useNotification();
 
   //HOOK LOADING CATEGORIES
   const categories = useLoadCategories("income");
-
-  //http://localhost:3000/incomes?description_like=ppp&date_gte=2023-02-01&date_lte=2023-03-19
 
   //Search
   const handleSubmit = async (e) => {
@@ -55,17 +51,13 @@ const Search = () => {
       "&date_lte=" +
       to +
       "&description_like=" +
-      description;
+      description +
+      "&user_id=" +
+      user_id;
 
     fetch(url)
       .then((data) => data.json())
       .then((data) => setTableData(data));
-
-    //clear states and inputs after submit or edit
-    //setType(null);
-    //setFrom(null);
-    //setTo(null);
-    //setDescription(null);
 
     //END LOADING
     showLoading(false);
