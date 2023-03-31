@@ -5,7 +5,7 @@
       "name": "Antenor",
       "login": "antenor",
       "email": "antenorq@gmail.com",
-      "password": "$2a$10$rEZFh9q3xusM7iB.dqliaeOfTrkQQyoF32XoFoEw9/Ii3IJrKFCai"
+      "password": "$2a$10$eoPnNqiv3Q7awA51i6o7Yu8C3zyFTsJlzbUGI6jKftr3uamQ8sice"
     },
     {
       "id": 4,
@@ -27,21 +27,27 @@
       "name": "test2",
       "login": "test2",
       "id": 6
+    },
+    {
+      "email": "test3@gmail.com",
+      "password": "$2a$10$.UfQXHAVJYxRrvXLcSUi6OCz4MG4ulilBKrY2cx8gRJEebzuSd9nq",
+      "name": "test3",
+      "login": "test3",
+      "id": 7
+    },
+    {
+      "email": "test4@gmail.com",
+      "password": "$2a$10$b0Vy9JAbK3hgscqNz0ev4OWHYXmK3RfT1.EXYUkyfxdl86MVvcppi",
+      "name": "test4",
+      "login": "test4",
+      "id": 8
     }
   ],
   "incomes": [
     {
-      "id": 1,
-      "category": 1,
-      "description": "Salary 1",
-      "value": "1000",
-      "date": "1994-10-10",
-      "user_id": 3
-    },
-    {
       "id": 2,
       "category": 1,
-      "description": "Salary 2",
+      "description": "company 1",
       "value": "2002",
       "date": "2023-05-29",
       "user_id": 3
@@ -55,253 +61,8 @@
       "user_id": 4
     },
     {
-      "id": 26,
-      "category": 1,
-      "description": "salariooo",
-      "value": "3700",
-      "date": "2023-02-21T05:00:00.000Z"
-    },
-    {
-      "category": 2,
-      "description": "zs",
-      "value": "8778.20",
-      "date": "2023-02-08T05:00:00.000Z",
-      "id": 7
-    },
-    {
-      "category": 1,
-      "description": "asas",
-      "value": "1111",
-      "date": "2023-02-01T05:00:00.000Z",
-      "id": 8
-    },
-    {
-      "category": 1,
-      "description": "aaaaaaaa",
-      "value": "1111.00",
-      "date": "2023-02-01T05:00:00.000Z",
-      "id": 9
-    },
-    {
-      "category": 1,
-      "description": "sasdasdasd",
-      "value": "1200",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 30
-    },
-    {
-      "category": 1,
-      "description": "qqqqqqqqqq",
-      "value": "1200",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 31
-    },
-    {
-      "category": 1,
-      "description": "Bike accessories ",
-      "value": "555",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 32
-    },
-    {
-      "category": 1,
-      "description": "23232",
-      "value": "91100",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 33
-    },
-    {
-      "category": 1,
-      "description": "222",
-      "value": "91100",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 34
-    },
-    {
-      "category": 1,
-      "description": "xxxx",
-      "value": "1200",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 35
-    },
-    {
-      "category": 1,
-      "description": "2222",
-      "value": "91100",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 36
-    },
-    {
-      "category": 1,
-      "description": "vvvv",
-      "value": "1200",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 37
-    },
-    {
-      "category": 1,
-      "description": "asas",
-      "value": "74747",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 38
-    },
-    {
-      "category": 1,
-      "description": "Bike accessories ",
-      "value": "4444",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 39
-    },
-    {
-      "category": 1,
-      "description": "ffffff",
-      "value": "1200",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 40
-    },
-    {
-      "category": 1,
-      "description": "bbbbbb",
-      "value": "1200",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 41
-    },
-    {
-      "category": 1,
-      "description": "asas",
-      "value": "1200",
-      "date": "2023-02-23T05:00:00.000Z",
-      "id": 42
-    },
-    {
-      "category": 1,
-      "description": "nnnnnn",
-      "value": "1200",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 43
-    },
-    {
-      "category": 1,
-      "description": "mmmmm",
-      "value": "1111",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 44
-    },
-    {
-      "category": 1,
-      "description": "zzzzz",
-      "value": "1200",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 45
-    },
-    {
-      "category": 1,
-      "description": "abababa",
-      "value": "1111",
-      "date": "2023-02-23T05:00:00.000Z",
-      "id": 46
-    },
-    {
-      "category": 1,
-      "description": "zxzxz",
-      "value": "1200",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 47
-    },
-    {
-      "category": 1,
-      "description": "asd2",
-      "value": "1111",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 48
-    },
-    {
-      "category": 1,
-      "description": "qwqw",
-      "value": "1200",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 49
-    },
-    {
-      "category": 1,
-      "description": "asas",
-      "value": "1200",
-      "date": "2023-02-23T05:00:00.000Z",
-      "id": 50
-    },
-    {
-      "category": 1,
-      "description": "Bike accessories ",
-      "value": "1200",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 51
-    },
-    {
-      "category": 1,
-      "description": "asas",
-      "value": "91100",
-      "date": "2023-02-15T05:00:00.000Z",
-      "id": 52
-    },
-    {
-      "category": 1,
-      "description": "111",
-      "value": "1111",
-      "date": "2023-02-22T05:00:00.000Z",
-      "id": 53
-    },
-    {
-      "category": 1,
-      "description": "222",
-      "value": "1200",
-      "date": "2023-02-10T05:00:00.000Z",
-      "id": 54
-    },
-    {
-      "category": 1,
-      "description": "333",
-      "value": "333",
-      "date": "2023-02-23T05:00:00.000Z",
-      "id": 55
-    },
-    {
-      "id": 56,
-      "category": 1,
-      "description": "444",
-      "value": "444",
-      "date": "2023-02-24T05:00:00.000Z"
-    },
-    {
-      "category": 2,
-      "description": "aaa",
-      "value": "150",
-      "date": "2023-02-19T05:00:00.000Z",
-      "id": 22
-    },
-    {
-      "id": 24,
-      "category": 2,
-      "description": "ccc1",
-      "value": "91100",
-      "date": "2023-02-19T05:00:00.000Z"
-    },
-    {
-      "id": 57,
-      "category": 1,
-      "description": "ppppp",
-      "value": "454.20",
-      "date": "2023-03-18"
-    },
-    {
-      "id": 58,
-      "category": 1,
-      "description": "uiuiuiu",
-      "value": "1500",
-      "date": "2023-03-20"
-    },
-    {
       "id": 59,
-      "category": 9,
+      "category": 1,
       "description": "money extra",
       "value": "551",
       "date": "2023-03-28",
@@ -322,25 +83,25 @@
       "date": "2023-03-31",
       "user_id": 6,
       "id": 61
+    },
+    {
+      "category": 16,
+      "description": "igloo",
+      "value": "3600",
+      "date": "2023-03-31",
+      "user_id": 7,
+      "id": 63
+    },
+    {
+      "category": 2,
+      "description": "freelance march",
+      "value": "1000",
+      "date": "2023-03-31",
+      "user_id": 3,
+      "id": 64
     }
   ],
   "expenses": [
-    {
-      "id": 1,
-      "category": 3,
-      "description": "rent 1",
-      "value": "21002",
-      "date": "2023-02-22T05:00:00.000Z",
-      "user_id": 3
-    },
-    {
-      "id": 2,
-      "category": 3,
-      "description": "rent 2",
-      "value": "2100",
-      "date": "2023-02-22T05:00:00.000Z",
-      "user_id": 3
-    },
     {
       "category": 3,
       "description": "bbbbb",
@@ -380,10 +141,18 @@
     },
     {
       "id": 9,
-      "category": 3,
-      "description": "1222",
-      "value": "1002",
+      "category": 4,
+      "description": "payment car",
+      "value": "270",
       "date": "2023-03-31",
+      "user_id": 3
+    },
+    {
+      "id": 10,
+      "category": 3,
+      "description": "apartment",
+      "value": "1900",
+      "date": "2023-03-30",
       "user_id": 3
     }
   ],
@@ -437,9 +206,9 @@
       "user_id": 4
     },
     {
-      "category_type": 1,
-      "description": "extra",
       "id": 9,
+      "category_type": 1,
+      "description": "Extra",
       "user_id": 3
     },
     {
@@ -447,6 +216,18 @@
       "description": "category user 6",
       "user_id": 6,
       "id": 15
+    },
+    {
+      "id": 16,
+      "category_type": 1,
+      "description": "Salary",
+      "user_id": 7
+    },
+    {
+      "category_type": 2,
+      "description": "Apartment Rent",
+      "user_id": 7,
+      "id": 17
     }
   ]
 }

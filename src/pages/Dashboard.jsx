@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Grid, Paper, Typography } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
@@ -8,11 +8,71 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 import KeyIcon from "@mui/icons-material/Key";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import useLoadCategories from "../hooks/useLoadCategories";
 
 import style from "./dashboard.module.css";
 
 const Dashboard = () => {
+  const [tableData, setTableData] = useState([]);
+
+  //CONTEXT AUTH
   const { user } = useContext(AuthContext);
+
+  //HOOK LOADING CATEGORIES
+  const categories = useLoadCategories("all");
+
+  //I KNOW I NEED REFACTORE IT TO PUT IN A GLOBAL CONTEXT
+  const devEnv = process.env.NODE_ENV !== "production";
+  const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+
+  const url_incomes =
+    (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) +
+    "/incomes?" +
+    "&user_id=" +
+    user.id;
+
+  const url_expenses =
+    (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) +
+    "/expenses?" +
+    "&user_id=" +
+    user.id;
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async (e) => {
+    var income_expense = [];
+
+    const res = await fetch(url_incomes);
+    const datai = await res.json();
+
+    const res2 = await fetch(url_expenses);
+    const datae = await res2.json();
+
+    income_expense = [...datai, ...datae];
+    setTableData(income_expense);
+    return tableData;
+  };
+
+  const columns = [
+    { field: "id", headerName: "ID", flex: 0.5 },
+    {
+      field: "category",
+      headerName: "Category",
+      flex: 1,
+      renderCell: (params) => {
+        var result = categories.find(
+          (categorie) => categorie.id === params.row.category
+        );
+        if (result) return result.description;
+      },
+    },
+    { field: "description", headerName: "Description", flex: 1 },
+    { field: "value", headerName: "Value", flex: 0.5 },
+    { field: "date", headerName: "Date", flex: 1 },
+  ];
 
   const iconsize = {
     fontSize: { xs: "80px", md: "100px", lg: "120px" },
@@ -71,26 +131,51 @@ const Dashboard = () => {
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>
-        <Paper className={style.paper} elevation={2} sx={paperstyle}>
-          <CancelIcon color="primary" sx={iconsize} />
-          <Typography variant="h6">LOGOUT</Typography>
-        </Paper>
+        <a href={"/login"}>
+          <Paper className={style.paper} elevation={2} sx={paperstyle}>
+            <CancelIcon color="primary" sx={iconsize} />
+            <Typography variant="h6">LOGOUT</Typography>
+          </Paper>
+        </a>
       </Grid>
 
       <Grid item xs={12}>
         <Paper className={style.paper} elevation={2} sx={paperstyle}>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
+          <Typography
+            align="center"
+            color="primary"
+            variant="h4"
+            component="h2"
+            gutterBottom
+          >
+            Last Records
+          </Typography>
+
+          <div style={{ height: 300, marginTop: "30px" }}>
+            <DataGrid
+              rows={tableData}
+              columns={columns}
+              getRowId={(row) => row.id + row.value}
+              components={{
+                Toolbar: GridToolbar,
+              }}
+              componentsProps={{
+                toolbar: {
+                  showQuickFilter: true,
+                  quickFilterProps: { debounceMs: 500 },
+                  sx: {
+                    bgcolor: "#eee",
+                  },
+                },
+              }}
+              initialState={{
+                sorting: {
+                  sortModel: [{ field: "id", sort: "desc" }],
+                },
+              }}
+              sx={{ backgroundColor: "#fff", overflowY: "scroll" }}
+            />
+          </div>
         </Paper>
       </Grid>
     </Grid>

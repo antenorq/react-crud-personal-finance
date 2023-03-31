@@ -55,6 +55,8 @@ const Search = ({ user_id }) => {
       "&user_id=" +
       user_id;
 
+    console.log(url);
+
     fetch(url)
       .then((data) => data.json())
       .then((data) => setTableData(data));

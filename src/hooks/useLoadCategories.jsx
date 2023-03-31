@@ -27,7 +27,7 @@ const useLoadCategories = (formType) => {
   if (formType === "all") {
     url_categories =
       (devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL) +
-      "/categories&user_id=" +
+      "/categories?user_id=" +
       user.id;
   }
 
@@ -47,7 +47,7 @@ const useLoadCategories = (formType) => {
       const data_categories = await res.json();
       setCategories(data_categories);
 
-      if (data_categories.length === 0) {
+      if (data_categories.length === 0 && formType != "all") {
         setNotification(
           "REGISTER SOME CATEGORY FOR: " + formType + ". GO TO CATEGORY PAGE",
           "error"
