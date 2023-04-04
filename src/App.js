@@ -52,7 +52,7 @@ function App() {
             element={user ? <Expense /> : <Navigate to="/" />}
           />
           <Route
-            path="/login"
+            path="/log-in"
             element={user ? <Dashboard /> : <Navigate to="/" />}
           />
           <Route

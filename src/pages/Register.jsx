@@ -87,7 +87,7 @@ const Register = () => {
         if (res.ok) {
           setNotification("USER CREATED SUCCESSFULY", "success");
           //redirect to login page
-          navigate("/login");
+          navigate("/log-in");
         } else {
           setNotification("SOMETHING WENT WRONG: " + res.statusText, "error");
         }

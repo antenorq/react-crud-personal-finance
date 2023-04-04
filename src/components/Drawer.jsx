@@ -70,14 +70,16 @@ export default function TemporaryDrawer({ openDrawer, handleDrawerClose }) {
       </List>
       <Divider />
       <List>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <CancelIcon />
-            </ListItemIcon>
-            <ListItemText primary="EXIT" />
-          </ListItemButton>
-        </ListItem>
+        <a href={"/log-in"}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <CancelIcon />
+              </ListItemIcon>
+              <ListItemText primary="EXIT" />
+            </ListItemButton>
+          </ListItem>
+        </a>
       </List>
     </Box>
   );

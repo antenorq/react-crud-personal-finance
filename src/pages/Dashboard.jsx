@@ -131,7 +131,7 @@ const Dashboard = () => {
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>
-        <a href={"/login"}>
+        <a href={"/log-in"}>
           <Paper className={style.paper} elevation={2} sx={paperstyle}>
             <CancelIcon color="primary" sx={iconsize} />
             <Typography variant="h6">LOGOUT</Typography>
