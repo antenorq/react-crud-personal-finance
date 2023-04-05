@@ -1,4 +1,4 @@
-import React from "react";
+import { useContext } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -14,8 +14,16 @@ import { NavLink } from "react-router-dom";
 import Home from "@mui/icons-material/Home";
 import AddCircle from "@mui/icons-material/AddCircle";
 import RemoveCircle from "@mui/icons-material/RemoveCircle";
+import { AuthContext } from "../context/AuthContext";
 
 export default function TemporaryDrawer({ openDrawer, handleDrawerClose }) {
+  //CONTEXT AUTH
+  const { user, setUser } = useContext(AuthContext);
+
+  const logout = () => {
+    setUser(null);
+  };
+
   const list = () => (
     <Box
       sx={{ width: 300 }}
@@ -70,16 +78,14 @@ export default function TemporaryDrawer({ openDrawer, handleDrawerClose }) {
       </List>
       <Divider />
       <List>
-        <a href={"/log-in"}>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <CancelIcon />
-              </ListItemIcon>
-              <ListItemText primary="EXIT" />
-            </ListItemButton>
-          </ListItem>
-        </a>
+        <ListItem disablePadding>
+          <ListItemButton onClick={logout}>
+            <ListItemIcon>
+              <CancelIcon />
+            </ListItemIcon>
+            <ListItemText primary="EXIT" />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );

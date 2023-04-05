@@ -17,7 +17,7 @@ const Dashboard = () => {
   const [tableData, setTableData] = useState([]);
 
   //CONTEXT AUTH
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
 
   //HOOK LOADING CATEGORIES
   const categories = useLoadCategories("all");
@@ -39,21 +39,24 @@ const Dashboard = () => {
     user.id;
 
   useEffect(() => {
+    const fetchData = async (e) => {
+      var income_expense = [];
+
+      const res = await fetch(url_incomes);
+      const datai = await res.json();
+
+      const res2 = await fetch(url_expenses);
+      const datae = await res2.json();
+
+      income_expense = [...datai, ...datae];
+      setTableData(income_expense);
+      return tableData;
+    };
     fetchData();
   }, []);
 
-  const fetchData = async (e) => {
-    var income_expense = [];
-
-    const res = await fetch(url_incomes);
-    const datai = await res.json();
-
-    const res2 = await fetch(url_expenses);
-    const datae = await res2.json();
-
-    income_expense = [...datai, ...datae];
-    setTableData(income_expense);
-    return tableData;
+  const logout = () => {
+    setUser(null);
   };
 
   const columns = [
@@ -131,12 +134,15 @@ const Dashboard = () => {
       </Grid>
 
       <Grid item xs={6} sm={4} md={4} lg={2}>
-        <a href={"/log-in"}>
-          <Paper className={style.paper} elevation={2} sx={paperstyle}>
-            <CancelIcon color="primary" sx={iconsize} />
-            <Typography variant="h6">LOGOUT</Typography>
-          </Paper>
-        </a>
+        <Paper
+          onClick={logout}
+          className={style.paper}
+          elevation={2}
+          sx={paperstyle}
+        >
+          <CancelIcon color="primary" sx={iconsize} />
+          <Typography variant="h6">LOGOUT</Typography>
+        </Paper>
       </Grid>
 
       <Grid item xs={12}>
