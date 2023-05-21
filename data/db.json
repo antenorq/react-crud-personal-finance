@@ -93,12 +93,12 @@
       "id": 63
     },
     {
+      "id": 64,
       "category": 2,
       "description": "freelance march",
       "value": "1000",
       "date": "2023-03-31",
-      "user_id": 3,
-      "id": 64
+      "user_id": 3
     }
   ],
   "expenses": [
